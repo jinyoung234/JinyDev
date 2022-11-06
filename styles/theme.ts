@@ -10,6 +10,7 @@ const defaultTheme = {
 const lightTheme: DefaultTheme = {
   ...defaultTheme,
   fontColor: "#000000",
+  routeFontColor: "#D9D9D9",
   headerColor: "#ffffff",
   accentColor: {
     fontColor: "#122650",
@@ -19,13 +20,14 @@ const lightTheme: DefaultTheme = {
   tagColor: "#ffffff",
   indexColor: {
     fontColor: "#000000",
-    bgColor: "ffffff",
+    bgColor: "#ffffff",
   },
 };
 
 const colorTheme: DefaultTheme = {
   ...defaultTheme,
   fontColor: "#ffffff",
+  routeFontColor: "#DABA91",
   headerColor: "#F2E9E6",
   accentColor: {
     fontColor: "#FBE8C3",
