@@ -19,7 +19,7 @@ const lightTheme: DefaultTheme = {
   tagColor: "#ffffff",
   indexColor: {
     fontColor: "#000000",
-    bgColor: "ffffff",
+    bgColor: "#ffffff",
   },
 };
 

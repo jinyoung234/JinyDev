@@ -40,7 +40,7 @@ export const GlobalStyle = createGlobalStyle`
         line-height: 1;
         font-family: "suit", -apple-system, BlinkMacSystemFont, Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
         transition:background-color 0.2s ease-in-out;
-        background-color: ${({ theme }) => theme.bgColor};
+        background-color: ${({ theme }) => theme.headerColor};
         color:${({ theme }) => theme.fontColor}
     }
     ol, ul, li {
