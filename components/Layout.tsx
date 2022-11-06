@@ -1,13 +1,8 @@
+/* eslint-disable react/jsx-no-useless-fragment */
 import React from "react";
-import { ThemeProvider } from "styled-components";
-import { GlobalStyle } from "../styles/globalStyle";
-import { lightTheme } from "../styles/theme";
 
-export default function Layout({ chlidren }: React.ComponentProps<any>) {
-  return (
-    <ThemeProvider theme={lightTheme}>
-      <GlobalStyle />
-      {chlidren}
-    </ThemeProvider>
-  );
-}
+const Layout: React.FC<any> = ({ children }) => {
+  return <>{children}</>;
+};
+
+export default Layout;
