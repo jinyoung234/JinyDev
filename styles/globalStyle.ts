@@ -25,7 +25,7 @@ export const GlobalStyle = createGlobalStyle`
         vertical-align: baseline;
     }
     html {
-        font-size: 62.5%;
+        font-size: 10px;
         scroll-padding-top: 8rem;
     }
     html, body, #__next {
