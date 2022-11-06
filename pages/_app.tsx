@@ -1,21 +1,13 @@
+/* eslint-disable import/order */
 /* eslint-disable @typescript-eslint/ban-types */
-import Layout from "../components/Layout";
+import { NextPage } from "next";
+import { AppProps } from "next/app";
+import Layout from "../components/layout";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyle } from "../styles/globalStyle";
 import { colorTheme, lightTheme } from "../styles/theme";
-import { ReactElement, ReactNode } from "react";
-import { NextPage } from "next";
-import { AppProps } from "next/app";
 
-export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
-  getLayout?: (page: ReactElement) => ReactNode;
-};
-
-type AppPropsWithLayout = AppProps & {
-  Component: NextPageWithLayout;
-};
-
-export default function App({ Component, pageProps }: AppPropsWithLayout) {
+export default function App({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider theme={lightTheme}>
       <GlobalStyle />
