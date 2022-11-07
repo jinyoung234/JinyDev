@@ -1,13 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
+import { useRecoilValue } from "recoil";
+import { changeMode } from "../../atoms";
 import { CONTENT_TITLE } from "../../constants";
 import HashTag from "./hashTag";
 import { ContentComponent } from "./style";
 import Title from "./title";
 
 function Content() {
-  const [isLightMode] = useState(true);
+  const isChangeMode = useRecoilValue(changeMode);
   return (
-    <ContentComponent isLightMode={isLightMode}>
+    <ContentComponent isChangeMode={isChangeMode}>
       <section>
         <Title
           name={CONTENT_TITLE.name}

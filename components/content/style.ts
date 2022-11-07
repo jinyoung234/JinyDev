@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import { displayAlignCenter, displayColumn } from "../../styles/cssStyle";
 
-export const ContentWrapper = styled.div<{ isLightMode: boolean }>`
-  background-color: ${props => props.isLightMode && props.theme.bgColor};
+export const ContentWrapper = styled.div<{ isChangeMode: boolean }>`
+  background-color: ${props => props.theme.bgColor};
   min-height: calc(100vh - 8.2rem - 6.9rem);
 `;
 

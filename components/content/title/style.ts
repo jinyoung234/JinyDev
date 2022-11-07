@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-export const TitleComponent = styled.div<{ isColorMode: boolean }>`
-  color: ${props => props.isColorMode && props.theme.fontColor};
+export const TitleComponent = styled.div<{ isChangeMode: boolean }>`
+  color: ${props => props.isChangeMode && props.theme.fontColor};
   padding: 1rem 0;
   p {
     font-size: 3rem;
