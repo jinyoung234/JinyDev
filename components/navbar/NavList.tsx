@@ -1,17 +1,26 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { useState } from "react";
+import React from "react";
 import { NAV_LIST } from "../../constants";
+import useChangeMode from "../../hooks/useChangeMode";
 import { List } from "./style";
 
 function NavList() {
   const router = useRouter();
-  const [isColorMode, setIsColorMode] = useState(false);
+  const { isChangeMode, handleChangeMode } = useChangeMode();
+
   return (
     <List path={router.asPath}>
       <li>
-        {isColorMode ? (
-          <svg xmlns="http://www.w3.org/2000/svg" width="32px" height="32px" viewBox="0 0 32 32" id="icon">
+        {isChangeMode ? (
+          <svg
+            onClick={handleChangeMode}
+            xmlns="http://www.w3.org/2000/svg"
+            width="32px"
+            height="32px"
+            viewBox="0 0 32 32"
+            id="icon"
+          >
             <title>sunny</title>
             <path
               d="M16,12a4,4,0,1,1-4,4,4.0045,4.0045,0,0,1,4-4m0-2a6,6,0,1,0,6,6,6,6,0,0,0-6-6Z"
@@ -52,6 +61,7 @@ function NavList() {
           </svg>
         ) : (
           <svg
+            onClick={handleChangeMode}
             xmlns="http://www.w3.org/2000/svg"
             height="32px"
             id="Layer_1"

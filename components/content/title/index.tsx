@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useRecoilValue } from "recoil";
+import { changeMode } from "../../../atoms";
 import { TitleComponent } from "./style";
 
 export interface TitleProps {
@@ -20,9 +22,9 @@ Title.defaultProps = {
  * - `light mode`, `color mode`에 따라 `accent color`를 변경 할 수 있습니다.
  */
 export default function Title({ jobContent, accentContent, name }: TitleProps) {
-  const [isColorMode] = useState(true);
+  const isChangeMode = useRecoilValue(changeMode);
   return (
-    <TitleComponent isColorMode={isColorMode}>
+    <TitleComponent isChangeMode={isChangeMode}>
       <p>{jobContent}</p>
       <p>
         <span>{accentContent}</span>
