@@ -9,3 +9,8 @@ export interface LayoutProps {
 export interface SeoProps {
   title: string;
 }
+
+// Blog 컴포넌트 -> BlogCategory 컴포넌트
+export interface BlogCategoryProps {
+  category: string;
+}
