@@ -1,12 +1,12 @@
 import styled from "styled-components";
 import { displayAlignCenter, displayColumn } from "../../styles/cssStyle";
 
-export const ContentWrapper = styled.div<{ isChangeMode: boolean }>`
+export const ContentLayoutWrapper = styled.div<{ isChangeMode: boolean }>`
   background-color: ${props => props.theme.bgColor};
   min-height: calc(100vh - 8.2rem - 6.9rem);
 `;
 
-export const ContentComponent = styled(ContentWrapper)`
+export const ContentWrapper = styled(ContentLayoutWrapper)`
   display: flex;
   letter-spacing: 0.08rem;
   section {

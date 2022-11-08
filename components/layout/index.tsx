@@ -5,7 +5,7 @@ import { ThemeProvider } from "styled-components";
 import { changeMode } from "../../atoms";
 import { GlobalStyle } from "../../styles/globalStyle";
 import { colorTheme, lightTheme } from "../../styles/theme";
-import { ContentWrapper } from "../content/style";
+import { ContentLayoutWrapper } from "../content/style";
 import Footer from "../footer";
 import NavBar from "../navbar";
 
@@ -23,7 +23,7 @@ const Layout: React.FC<any> = ({ children }) => {
     <ThemeProvider theme={isChangeMode ? colorTheme : lightTheme}>
       <GlobalStyle />
       <NavBar />
-      <ContentWrapper isChangeMode={isChangeMode}>{children}</ContentWrapper>
+      <ContentLayoutWrapper isChangeMode={isChangeMode}>{children}</ContentLayoutWrapper>
       <Footer />
     </ThemeProvider>
   );
