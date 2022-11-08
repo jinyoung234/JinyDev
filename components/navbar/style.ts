@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { displayAlignCenter, displaySpaceBetween } from "../../styles/cssStyle";
 
-export const Nav = styled.nav`
+export const NavWrapper = styled.nav`
   margin: 0 18%;
   padding: 1.9rem 2.4rem;
   ${displaySpaceBetween}
@@ -15,7 +15,7 @@ export const Nav = styled.nav`
   }
 `;
 
-export const List = styled.ul<{ path: string }>`
+export const NavListWrapper = styled.ul<{ path: string }>`
   ul {
     ${displayAlignCenter}
   }
