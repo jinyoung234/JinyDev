@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const TitleComponent = styled.div<{ isChangeMode: boolean }>`
+export const TitleWrapper = styled.div<{ isChangeMode: boolean }>`
   color: ${props => props.isChangeMode && props.theme.fontColor};
   padding: 1rem 0;
   p {

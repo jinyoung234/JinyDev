@@ -1,14 +1,14 @@
 import Link from "next/link";
 import NavList from "./NavList";
-import { Nav } from "./style";
+import { NavWrapper } from "./style";
 
 export default function NavBar() {
   return (
-    <Nav>
+    <NavWrapper>
       <Link href="/">
         <div>JinyDev</div>
       </Link>
       <NavList />
-    </Nav>
+    </NavWrapper>
   );
 }

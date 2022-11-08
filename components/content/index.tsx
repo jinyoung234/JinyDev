@@ -3,13 +3,13 @@ import { useRecoilValue } from "recoil";
 import { changeMode } from "../../atoms";
 import { CONTENT_TITLE } from "../../constants";
 import HashTag from "./hashTag";
-import { ContentComponent } from "./style";
+import { ContentWrapper } from "./style";
 import Title from "./title";
 
 function Content() {
   const isChangeMode = useRecoilValue(changeMode);
   return (
-    <ContentComponent isChangeMode={isChangeMode}>
+    <ContentWrapper isChangeMode={isChangeMode}>
       <section>
         <Title
           name={CONTENT_TITLE.name}
@@ -21,7 +21,7 @@ function Content() {
       <section>
         <img src="image/jinyoung.jpg" alt="it's me" />
       </section>
-    </ContentComponent>
+    </ContentWrapper>
   );
 }
 

@@ -1,13 +1,13 @@
 import React from "react";
 import { Icon } from "@iconify/react";
 import Link from "next/link";
-import { FooterComponent } from "./style";
+import { FooterWrapper, FooterListWrapper } from "./style";
 
 export default function Footer() {
   return (
-    <FooterComponent>
+    <FooterWrapper>
       <p>© | 2022 JinyDev All rights reserved.</p>
-      <ul>
+      <FooterListWrapper>
         <Link href="https://www.linkedin.com/in/%EC%98%81-%EC%A7%84-80851a255/">
           <Icon icon="iconoir:linkedin" />
         </Link>
@@ -17,7 +17,7 @@ export default function Footer() {
         <Link href="https://www.instagram.com/wlsdudsson">
           <Icon icon="bi:instagram" />
         </Link>
-      </ul>
-    </FooterComponent>
+      </FooterListWrapper>
+    </FooterWrapper>
   );
 }

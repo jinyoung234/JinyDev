@@ -1,7 +1,6 @@
-import { useState } from "react";
 import { useRecoilValue } from "recoil";
 import { changeMode } from "../../../atoms";
-import { TitleComponent } from "./style";
+import { TitleWrapper } from "./style";
 
 export interface TitleProps {
   /** 희망하는 직무 */
@@ -24,12 +23,12 @@ Title.defaultProps = {
 export default function Title({ jobContent, accentContent, name }: TitleProps) {
   const isChangeMode = useRecoilValue(changeMode);
   return (
-    <TitleComponent isChangeMode={isChangeMode}>
+    <TitleWrapper isChangeMode={isChangeMode}>
       <p>{jobContent}</p>
       <p>
         <span>{accentContent}</span>
         <span>{name}</span>
       </p>
-    </TitleComponent>
+    </TitleWrapper>
   );
 }

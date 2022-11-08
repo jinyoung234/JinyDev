@@ -3,14 +3,14 @@ import { useRouter } from "next/router";
 import React from "react";
 import { NAV_LIST } from "../../constants";
 import useChangeMode from "../../hooks/useChangeMode";
-import { List } from "./style";
+import { NavListWrapper } from "./style";
 
 function NavList() {
   const router = useRouter();
   const { isChangeMode, handleChangeMode } = useChangeMode();
 
   return (
-    <List path={router.asPath}>
+    <NavListWrapper path={router.asPath}>
       <li>
         {isChangeMode ? (
           <svg
@@ -78,7 +78,7 @@ function NavList() {
           <li>{navElement}</li>
         </Link>
       ))}
-    </List>
+    </NavListWrapper>
   );
 }
 
