@@ -10,7 +10,7 @@ import { BlogCategoryWrapper, BlogGridWrapper, BlogWrapper, CategoryTagListWrapp
 
 export default function BlogList({ posts }: PostsMapProps) {
   const postsData = Array.from(Object.values(posts)) as unknown as PostsProps[];
-  // const tagList = Array.from(new Set(postsData.map(post => post.frontMatter.tags).flat()));
+  const tagList = Array.from(new Set(postsData.map(post => post.frontMatter.tags).flat()));
   const isChangeMode = useRecoilValue(changeMode);
   const [windowSize, setWindowSize] = useState<number | null>(null);
   useEffect(() => {
@@ -23,7 +23,7 @@ export default function BlogList({ posts }: PostsMapProps) {
   return (
     <BlogWrapper>
       <CategoryTagListWrapper>
-        {CATEGORY_LIST.map(tag => (
+        {tagList.map(tag => (
           <CategoryTag tag={tag} key={tag} />
         ))}
       </CategoryTagListWrapper>
