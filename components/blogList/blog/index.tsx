@@ -1,20 +1,25 @@
+import React from "react";
+import { BlogProps } from "../../../interfaces/common";
 import { BlogWrapper } from "./style";
 
-export default function Blog() {
+function Blog({ post }: BlogProps) {
   return (
     <BlogWrapper>
       <div>
-        <img src="image/jinyoung.jpg" alt="jinyoun" />
+        <img src={post?.thumbnailUrl} alt="jinyoung" />
       </div>
       <div id="contentContainer">
-        <span>나의 첫 블로그 체험기</span>
-        <span>블로그 만드는거 은근 귀찮고 디자인 하기 시루떡</span>
-        <span>2022-11-04 17:47</span>
+        <span>{post.title}</span>
+        <span>{post.description}</span>
+        <span>{post.createdAt}</span>
         <div>
-          <div>Next.js</div>
-          <div>React</div>
+          <div>{post?.tags[0]}</div>
+          <div>{post?.tags[1]}</div>
         </div>
       </div>
     </BlogWrapper>
   );
 }
+
+// 성능 최적화 작업 시 React.memo(Blog) 사용할 것
+export default Blog;
