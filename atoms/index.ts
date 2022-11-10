@@ -15,6 +15,7 @@ export const ssrCompletedAtom = atom({
 export const changeMode = atom({
   key: "changeMode",
   default: false,
+  effects_UNSTABLE: [persistAtomEffect],
 });
 
 // Blog 컴포넌트의 초기 상태인지 확인하는 atom

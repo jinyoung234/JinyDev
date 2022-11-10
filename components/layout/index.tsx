@@ -1,6 +1,6 @@
 /* eslint-disable react/function-component-definition */
 import React, { useEffect } from "react";
-import { useRecoilState } from "recoil";
+import { useRecoilValue } from "recoil";
 import { ThemeProvider } from "styled-components";
 import { changeMode } from "../../atoms";
 import { useSsrComplectedState } from "../../hooks/useSsrComplectedState";
@@ -11,16 +11,10 @@ import Footer from "../footer";
 import NavBar from "../navbar";
 
 const Layout: React.FC<any> = ({ children }) => {
-  const [isChangeMode, setIsChangeMode] = useRecoilState(changeMode);
+  const isChangeMode = useRecoilValue(changeMode);
   const setSsrCompleted = useSsrComplectedState();
   useEffect(() => {
     setSsrCompleted();
-    const persistTheme = localStorage.getItem("changeMode");
-    if (typeof persistTheme === "string") {
-      setIsChangeMode(JSON.parse(persistTheme));
-    } else {
-      setIsChangeMode(false);
-    }
   }, [setSsrCompleted]);
   return (
     <ThemeProvider theme={isChangeMode ? colorTheme : lightTheme}>

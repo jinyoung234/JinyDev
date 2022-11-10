@@ -5,7 +5,6 @@ const useChangeMode = () => {
   const [isChangeMode, setIsChangeMode] = useRecoilState(changeMode);
   const handleChangeMode = () => {
     setIsChangeMode(!isChangeMode);
-    localStorage.setItem("changeMode", JSON.stringify(!isChangeMode));
   };
 
   return { isChangeMode, handleChangeMode };
