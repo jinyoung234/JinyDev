@@ -1,7 +1,7 @@
 /* eslint-disable no-plusplus */
 import React, { useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
-import { changeMode, initializeAtom, isCategoryAtom, tagNameAtom } from "../../atoms";
+import { categoryNameAtom, changeMode, initializeAtom, isCategoryAtom, tagNameAtom } from "../../atoms";
 import { CATEGORY_LIST } from "../../constants";
 import { PostsMapProps, PostsProps } from "../../interfaces/common";
 import Blog from "./blog";
@@ -15,6 +15,7 @@ export default function BlogList({ posts }: PostsMapProps) {
 
   const isInitialize = useRecoilValue(initializeAtom);
   const tagName = useRecoilValue(tagNameAtom);
+  const categoryName = useRecoilValue(categoryNameAtom);
   const isCategory = useRecoilValue(isCategoryAtom);
 
   const isChangeMode = useRecoilValue(changeMode);
@@ -35,6 +36,7 @@ export default function BlogList({ posts }: PostsMapProps) {
     return filterTag;
   });
 
+  const filterPostsCategoryData = postsData.filter(post => post.frontMatter.category === categoryName);
   return (
     <BlogWrapper>
       <CategoryTagListWrapper>
@@ -54,7 +56,9 @@ export default function BlogList({ posts }: PostsMapProps) {
       )}
       <BlogGridWrapper>
         {isInitialize ? postsData.map(post => <Blog key={post.frontMatter.title} post={post.frontMatter} />) : ""}
-
+        {!isInitialize && isCategory
+          ? filterPostsCategoryData.map(post => <Blog key={post.frontMatter.title} post={post.frontMatter} />)
+          : ""}
         {!isInitialize && !isCategory
           ? filterPostsData.map(post => <Blog key={post.frontMatter.title} post={post.frontMatter} />)
           : ""}
