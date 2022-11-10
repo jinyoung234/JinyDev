@@ -1,4 +1,16 @@
-import { atom } from "recoil";
+import { atom, AtomEffect } from "recoil";
+import { recoilPersist } from "recoil-persist";
+
+const { persistAtom } = recoilPersist();
+
+export const persistAtomEffect = <T>(param: Parameters<AtomEffect<T>>[0]) => {
+  param.getPromise(ssrCompletedAtom).then(() => persistAtom(param));
+};
+
+export const ssrCompletedAtom = atom({
+  key: "ssrCompleted",
+  default: false,
+});
 
 export const changeMode = atom({
   key: "changeMode",
