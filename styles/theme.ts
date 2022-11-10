@@ -14,7 +14,7 @@ const lightTheme: DefaultTheme = {
   headerColor: "#ffffff",
   accentColor: {
     fontColor: "#122650",
-    contentColor: "#ffffff",
+    contentColor: "#F9F9F9",
   },
   bgColor: "#F1F1F1",
   tagColor: "#ffffff",
@@ -31,7 +31,7 @@ const colorTheme: DefaultTheme = {
   headerColor: "#F2E9E6",
   accentColor: {
     fontColor: "#FBE8C3",
-    contentColor: "#FBE8C3",
+    contentColor: "#D5EEAC",
   },
   bgColor: "#DABA91",
   tagColor: "#8AB633",

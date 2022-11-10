@@ -1,14 +1,19 @@
 import styled from "styled-components";
 
 export const CategoryTagWrapper = styled.div<{ isChangeMode: boolean }>`
-  width: 78%;
+  text-align: center;
+  word-break: keep-all;
+  width: 8rem;
+  margin-right: 1rem;
   display: flex;
+  align-items: center;
   justify-content: center;
-  background-color: white;
-  color: black;
-  font-size: 1.4rem;
-  padding: 0.8rem 1.4rem;
+  background-color: ${props => props.theme.accentColor.contentColor};
+  color: ${props => props.isChangeMode && props.theme.fontColor};
+  font-size: 1.2rem;
+  padding: 0.4rem 0;
   border-radius: 1rem;
+  line-height: 1.3;
   box-shadow: ${props => props.theme.shadow.defaultShadow};
   :hover {
     background-color: ${props => (props.isChangeMode ? "#8AB633" : "#dee2e6")};
