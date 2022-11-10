@@ -22,7 +22,7 @@ export interface FrontMatterProps {
   description: string;
   thumbnailUrl: string;
   tags: string[];
-  category: string[];
+  category: string;
 }
 
 // mdx 파일에서 가져온 data type
