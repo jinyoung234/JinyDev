@@ -1,6 +1,7 @@
+/* eslint-disable no-plusplus */
 import React, { useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
-import { changeMode } from "../../atoms";
+import { changeMode, initializeAtom, isCategoryAtom, tagNameAtom } from "../../atoms";
 import { CATEGORY_LIST } from "../../constants";
 import { PostsMapProps, PostsProps } from "../../interfaces/common";
 import Blog from "./blog";
@@ -11,8 +12,14 @@ import { BlogCategoryWrapper, BlogGridWrapper, BlogWrapper, CategoryTagListWrapp
 export default function BlogList({ posts }: PostsMapProps) {
   const postsData = Array.from(Object.values(posts)) as unknown as PostsProps[];
   const tagList = Array.from(new Set(postsData.map(post => post.frontMatter.tags).flat()));
+
+  const isInitialize = useRecoilValue(initializeAtom);
+  const tagName = useRecoilValue(tagNameAtom);
+  const isCategory = useRecoilValue(isCategoryAtom);
+
   const isChangeMode = useRecoilValue(changeMode);
   const [windowSize, setWindowSize] = useState<number | null>(null);
+
   useEffect(() => {
     setWindowSize(window.innerWidth);
     window.addEventListener("resize", () => setWindowSize(window.innerWidth));
@@ -20,6 +27,14 @@ export default function BlogList({ posts }: PostsMapProps) {
       window.removeEventListener("resize", () => setWindowSize(window.innerWidth));
     };
   }, [setWindowSize]);
+
+  const filterPostsData = postsData.filter(post => {
+    let filterTag = "";
+    for (let i = 0; i < post.frontMatter.tags.length; i++)
+      if (tagName.includes(post.frontMatter.tags[i])) filterTag = post.frontMatter.tags[i];
+    return filterTag;
+  });
+
   return (
     <BlogWrapper>
       <CategoryTagListWrapper>
@@ -38,9 +53,11 @@ export default function BlogList({ posts }: PostsMapProps) {
         </BlogCategoryWrapper>
       )}
       <BlogGridWrapper>
-        {postsData.map(post => (
-          <Blog key={post.frontMatter.title} post={post.frontMatter} />
-        ))}
+        {isInitialize ? postsData.map(post => <Blog key={post.frontMatter.title} post={post.frontMatter} />) : ""}
+
+        {!isInitialize && !isCategory
+          ? filterPostsData.map(post => <Blog key={post.frontMatter.title} post={post.frontMatter} />)
+          : ""}
       </BlogGridWrapper>
     </BlogWrapper>
   );
