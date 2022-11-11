@@ -1,7 +1,9 @@
 import { atom, AtomEffect } from "recoil";
 import { recoilPersist } from "recoil-persist";
 
-const { persistAtom } = recoilPersist();
+const { persistAtom } = recoilPersist({
+  key: "JinyDev",
+});
 
 export const persistAtomEffect = <T>(param: Parameters<AtomEffect<T>>[0]) => {
   param.getPromise(ssrCompletedAtom).then(() => persistAtom(param));
