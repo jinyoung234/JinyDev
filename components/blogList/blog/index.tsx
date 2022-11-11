@@ -1,23 +1,26 @@
+import Link from "next/link";
 import React from "react";
 import { BlogProps } from "../../../interfaces/common";
 import { BlogWrapper } from "./style";
 
-function Blog({ post }: BlogProps) {
+function Blog({ path, post, slug }: BlogProps) {
   return (
-    <BlogWrapper>
-      <div>
-        <img src={post?.thumbnailUrl} alt="jinyoung" />
-      </div>
-      <div id="contentContainer">
-        <span>{post.title}</span>
-        <span>{post.description}</span>
-        <span>{post.createdAt}</span>
+    <Link href={path === "dev" ? `/dev/${slug}` : `/blog/${slug}`}>
+      <BlogWrapper>
         <div>
-          <div>{post?.tags[0]}</div>
-          <div>{post?.tags[1]}</div>
+          <img src={post?.thumbnailUrl} alt="jinyoung" />
         </div>
-      </div>
-    </BlogWrapper>
+        <div id="contentContainer">
+          <span>{post.title}</span>
+          <span>{post.description}</span>
+          <span>{post.createdAt}</span>
+          <div>
+            <div>{post?.tags[0]}</div>
+            <div>{post?.tags[1]}</div>
+          </div>
+        </div>
+      </BlogWrapper>
+    </Link>
   );
 }
 
