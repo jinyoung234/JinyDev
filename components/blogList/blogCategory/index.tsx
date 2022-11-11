@@ -6,7 +6,7 @@ import { BlogCategoryProps } from "../../../interfaces/common";
 
 export default function BlogCategory({ category }: BlogCategoryProps) {
   const setInitialize = useSetRecoilState(initializeAtom);
-  const setCategoryState = useSetRecoilState(isCategoryAtom);
+  const setCategory = useSetRecoilState(isCategoryAtom);
   const setCategoryName = useSetRecoilState(categoryNameAtom);
 
   const handleFilterCategory = (categoryName: string) => {
@@ -15,14 +15,14 @@ export default function BlogCategory({ category }: BlogCategoryProps) {
       return;
     }
     setInitialize(false);
-    setCategoryState(true);
+    setCategory(true);
     setCategoryName(categoryName);
   };
 
   useEffect(() => {
     return () => {
       setInitialize(true);
-      setCategoryState(false);
+      setCategory(false);
       setCategoryName("");
     };
   }, []);

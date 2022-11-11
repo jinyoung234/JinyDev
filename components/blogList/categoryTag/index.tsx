@@ -20,7 +20,7 @@ export default function CategoryTag({ tag }: CategoryTagProps) {
   useEffect(() => {
     return () => {
       setInitialize(true);
-      setCategory(true);
+      setCategory(false);
       setTagName("");
     };
   }, []);
