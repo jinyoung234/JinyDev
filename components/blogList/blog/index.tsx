@@ -3,9 +3,9 @@ import React from "react";
 import { BlogProps } from "../../../interfaces/common";
 import { BlogWrapper } from "./style";
 
-function Blog({ path, post, slug }: BlogProps) {
+function Blog({ post, slug }: BlogProps) {
   return (
-    <Link href={path === "dev" ? `/dev/${slug}` : `/blog/${slug}`}>
+    <Link href={`/post/${slug}`}>
       <BlogWrapper>
         <div>
           <img src={post?.thumbnailUrl} alt="jinyoung" />
