@@ -41,6 +41,8 @@ export interface PostsProps {
 // Blog 컴포넌트 props type
 export interface BlogProps {
   post: FrontMatterProps;
+  slug: string;
+  path: string;
 }
 
 // CategoryTag 컴포넌트 props type
