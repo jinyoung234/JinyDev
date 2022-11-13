@@ -1,3 +1,4 @@
+import { MDXRemoteSerializeResult } from "next-mdx-remote";
 import React from "react";
 
 // Layout 컴포넌트 props type
@@ -42,10 +43,28 @@ export interface PostsProps {
 export interface BlogProps {
   post: FrontMatterProps;
   slug: string;
-  path: string;
 }
 
 // CategoryTag 컴포넌트 props type
 export interface CategoryTagProps {
   tag: string;
+}
+
+// Slug page props type
+export interface SlugProps {
+  mdxSource: MDXRemoteSerializeResult;
+  data: FrontMatterProps;
+}
+
+// Slug page getStaticPath type
+export interface GetStaticPathProps {
+  params: {
+    slug: [];
+  };
+}
+
+// CodeBlock Component type
+export interface CodeProps {
+  children: string;
+  className: string;
 }

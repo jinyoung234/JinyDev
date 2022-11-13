@@ -1,5 +1,4 @@
 /* eslint-disable no-plusplus */
-import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
 import { categoryNameAtom, changeMode, initializeAtom, isCategoryAtom, tagNameAtom } from "../../atoms";
@@ -40,8 +39,6 @@ export default function BlogList({ posts }: PostsMapProps) {
 
   const filterPostsCategoryData = postsData.filter(post => post.frontMatter.category === categoryName);
 
-  const router = useRouter();
-  const path = router.asPath.split("/")[1];
   return (
     <BlogWrapper>
       <CategoryTagListWrapper>
@@ -61,19 +58,15 @@ export default function BlogList({ posts }: PostsMapProps) {
       )}
       <BlogGridWrapper>
         {isInitialize
-          ? postsData.map(post => (
-              <Blog key={post.frontMatter.title} path={path} slug={post.slug} post={post.frontMatter} />
-            ))
+          ? postsData.map(post => <Blog key={post.frontMatter.title} slug={post.slug} post={post.frontMatter} />)
           : ""}
         {!isInitialize && isCategory
           ? filterPostsCategoryData.map(post => (
-              <Blog key={post.frontMatter.title} path={path} slug={post.slug} post={post.frontMatter} />
+              <Blog key={post.frontMatter.title} slug={post.slug} post={post.frontMatter} />
             ))
           : ""}
         {!isInitialize && !isCategory
-          ? filterPostsData.map(post => (
-              <Blog key={post.frontMatter.title} path={path} slug={post.slug} post={post.frontMatter} />
-            ))
+          ? filterPostsData.map(post => <Blog key={post.frontMatter.title} slug={post.slug} post={post.frontMatter} />)
           : ""}
       </BlogGridWrapper>
     </BlogWrapper>

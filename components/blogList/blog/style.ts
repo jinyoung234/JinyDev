@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const BlogWrapper = styled.div`
+  cursor: pointer;
   background-color: ${props => props.theme.accentColor.contentColor};
   color: ${props => props.theme.fontColor};
   display: flex;
@@ -26,24 +27,5 @@ export const BlogWrapper = styled.div`
   span:nth-child(2) {
     font-size: 1.3rem;
     margin-bottom: 5rem;
-  }
-  span:nth-child(3) + div {
-    padding: 1rem 0 0 0;
-    display: flex;
-    div {
-      line-height: 1.2;
-      text-align: center;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-color: ${props => props.theme.tagColor};
-      box-shadow: ${props => props.theme.shadow.defaultShadow};
-      border-radius: 0.8rem;
-      padding: 0.6rem 1rem;
-      font-weight: 500;
-    }
-    div:first-child {
-      margin-right: 0.6rem;
-    }
   }
 `;
