@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const CodeWrapper = styled.div`
   border-radius: 1rem;
   overflow: hidden;
   background-color: #2f3135;
@@ -8,7 +8,7 @@ export const Container = styled.div`
   margin: 2rem 0;
 `;
 
-export const CodeInfoBar = styled.div`
+export const CodeStatusBar = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
