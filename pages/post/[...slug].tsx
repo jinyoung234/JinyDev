@@ -1,24 +1,21 @@
 import { getAllPost, getPost } from "../../utils/mdxParsing";
-import { MDXRemote } from "next-mdx-remote";
-import Tag from "../../components/blogList/blog/tag";
-import { FrontMatterWrapper, SlugWrapper } from "../../components/post/style";
 import { GetStaticPathProps, SlugProps } from "../../interfaces/common";
+import PostTitle from "../../components/post/postTitle";
+import PostContent from "../../components/post/postContent";
+import { FrontMatterWrapper } from "../../components/post/postTitle/style";
+import { PostContentWrapper } from "../../components/post/postContent/style";
+import Seo from "../../components/seo";
 
 export default function Slug({ data: frontMatter, mdxSource }: SlugProps) {
   return (
     <>
+      <Seo title={frontMatter.title} />
       <FrontMatterWrapper>
-        <div id="frontmatter">
-          <p id="category">{frontMatter.category}</p>
-          <p id="title">{frontMatter.title}</p>
-          <p id="createdAt">{frontMatter.createdAt.split(" ")[0]}</p>
-          <Tag post={frontMatter} />
-          <img src={frontMatter.thumbnailUrl} alt="jinyoung" />
-        </div>
+        <PostTitle frontMatter={frontMatter} />
       </FrontMatterWrapper>
-      <SlugWrapper>
-        <MDXRemote {...mdxSource} />
-      </SlugWrapper>
+      <PostContentWrapper>
+        <PostContent mdxSource={mdxSource} />
+      </PostContentWrapper>
     </>
   );
 }
