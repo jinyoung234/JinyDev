@@ -19,5 +19,6 @@ declare module "styled-components" {
       fontColor: string;
       bgColor: string;
     };
+    codeColor: string;
   }
 }

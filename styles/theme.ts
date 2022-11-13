@@ -22,6 +22,7 @@ const lightTheme: DefaultTheme = {
     fontColor: "#000000",
     bgColor: "#ffffff",
   },
+  codeColor: "#ECECEC",
 };
 
 const colorTheme: DefaultTheme = {
@@ -39,6 +40,7 @@ const colorTheme: DefaultTheme = {
     fontColor: "#000000",
     bgColor: "ffffff",
   },
+  codeColor: "#8AB633",
 };
 
 export { lightTheme, colorTheme };
