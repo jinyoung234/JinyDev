@@ -62,3 +62,9 @@ export interface GetStaticPathProps {
     slug: [];
   };
 }
+
+// CodeBlock Component type
+export interface CodeProps {
+  children: string;
+  className: string;
+}
