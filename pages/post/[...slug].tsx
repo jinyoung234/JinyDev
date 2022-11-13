@@ -9,6 +9,7 @@ export default function Slug({ data: frontMatter, mdxSource }: SlugProps) {
     <>
       <FrontMatterWrapper>
         <div id="frontmatter">
+          <p id="category">{frontMatter.category}</p>
           <p id="title">{frontMatter.title}</p>
           <p id="createdAt">{frontMatter.createdAt.split(" ")[0]}</p>
           <Tag post={frontMatter} />
