@@ -1,8 +1,9 @@
 /* eslint-disable no-plusplus */
+import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
 import { categoryNameAtom, changeMode, initializeAtom, isCategoryAtom, tagNameAtom } from "../../atoms";
-import { CATEGORY_LIST } from "../../constants";
+import { DEV_CATEGORY_LIST, BLOG_CATEGORY_LIST } from "../../constants";
 import { PostsMapProps, PostsProps } from "../../interfaces/common";
 import Blog from "./blog";
 import BlogCategory from "./blogCategory";
@@ -39,6 +40,8 @@ export default function BlogList({ posts }: PostsMapProps) {
 
   const filterPostsCategoryData = postsData.filter(post => post.frontMatter.category === categoryName);
 
+  const router = useRouter();
+  const isRoute = router.asPath.split("/")[1];
   return (
     <BlogWrapper>
       <CategoryTagListWrapper>
@@ -50,9 +53,9 @@ export default function BlogList({ posts }: PostsMapProps) {
         <BlogCategoryWrapper isChangeMode={isChangeMode}>
           <ul>
             Category
-            {CATEGORY_LIST.map(category => (
-              <BlogCategory key={category} category={category} />
-            ))}
+            {isRoute === "dev"
+              ? DEV_CATEGORY_LIST.map(category => <BlogCategory key={category} category={category} />)
+              : BLOG_CATEGORY_LIST.map(category => <BlogCategory key={category} category={category} />)}
           </ul>
         </BlogCategoryWrapper>
       )}
