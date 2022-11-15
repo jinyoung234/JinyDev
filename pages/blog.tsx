@@ -13,7 +13,7 @@ export default function Blog({ posts }: PostsMapProps) {
 }
 
 export async function getStaticProps() {
-  const { posts } = getPost("dev");
+  const { posts } = getPost("blog");
   return {
     props: {
       posts,
