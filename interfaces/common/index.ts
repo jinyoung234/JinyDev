@@ -54,6 +54,7 @@ export interface CategoryTagProps {
 export interface SlugProps {
   mdxSource: MDXRemoteSerializeResult;
   data: FrontMatterProps;
+  content: string;
 }
 
 // Slug page getStaticPath type
