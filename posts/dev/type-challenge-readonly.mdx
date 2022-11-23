@@ -52,9 +52,7 @@ type MyReadonly<T> = {
 
 ---
 
-### 알게 된 점
-
-`readonly<T>`
+### readonly
 
 ```ts
 /**
@@ -67,7 +65,7 @@ type Readonly<T> = {
 
 - `T의 모든 프로퍼티`를 `readonly` 상태로 만들어 주는 `유틸리티 타입`
 
-#### ex
+#### ex1
 
 ```ts
 type MyReadonly<T> = {
@@ -93,7 +91,7 @@ myStudy.typescript = "tc";
 - `MyReadonly<Study>`를 타입으로 하는 객체 `myStudy` 생성
 - myStudy의 `typescript 프로퍼티를 재 할당` 하려고 하면 다음과 같은 `2540 에러가 발생`하는 것을 확인(`모든 프로퍼티가 readonly`이기 때문)
 
-`readonly`의 사용
+### readonly의 사용
 
 1. interface, type (생략)
 
@@ -101,7 +99,7 @@ myStudy.typescript = "tc";
 
 - 마찬가지로 타입 왼쪽 붙여 사용이 가능
 
-#### ex
+#### ex2
 
 ```ts
 let myStudy: readonly string[] = ["oopstudy", "typechellenge"];
