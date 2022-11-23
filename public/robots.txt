@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Sitemap: https://jinydev.site/sitemap.xml
+Disallow: /tags
