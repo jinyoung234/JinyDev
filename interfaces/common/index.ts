@@ -69,3 +69,13 @@ export interface CodeProps {
   children: string;
   className: string;
 }
+
+// Toc Component type
+export interface TocProps {
+  content: string;
+}
+
+export interface TocItemProps {
+  depth: number;
+  isSelected: boolean;
+}
