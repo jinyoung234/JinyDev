@@ -8,9 +8,10 @@ import Seo from "../../components/seo";
 import Toc from "../../components/post/toc";
 
 export default function Slug({ data: frontMatter, mdxSource, content }: SlugProps) {
+  const { title, description, tags } = frontMatter;
   return (
     <>
-      <Seo title={frontMatter.title} />
+      <Seo keywords={tags} description={description} title={title} />
       <Toc content={content} />
       <FrontMatterWrapper>
         <PostTitle frontMatter={frontMatter} />

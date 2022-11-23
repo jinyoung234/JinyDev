@@ -9,6 +9,8 @@ export interface LayoutProps {
 // Seo 컴포넌트 props type
 export interface SeoProps {
   title: string;
+  description: string;
+  keywords: string[];
 }
 
 // Blog 컴포넌트 -> BlogCategory 컴포넌트 props type
