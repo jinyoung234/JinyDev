@@ -19,6 +19,7 @@
     "@types/react-dom": "18.0.8",
     "@types/styled-components": "^5.1.26",
     "glob": "^8.0.3",
+    "globby": "^13.1.2",
     "gray-matter": "^4.0.3",
     "next": "13.0.2",
     "next-mdx-remote": "^4.2.0",
