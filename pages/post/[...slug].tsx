@@ -5,11 +5,13 @@ import PostContent from "../../components/post/postContent";
 import { FrontMatterWrapper } from "../../components/post/postTitle/style";
 import { PostContentWrapper } from "../../components/post/postContent/style";
 import Seo from "../../components/seo";
+import Toc from "../../components/post/toc";
 
-export default function Slug({ data: frontMatter, mdxSource }: SlugProps) {
+export default function Slug({ data: frontMatter, mdxSource, content }: SlugProps) {
   return (
     <>
       <Seo title={frontMatter.title} />
+      <Toc content={content} />
       <FrontMatterWrapper>
         <PostTitle frontMatter={frontMatter} />
       </FrontMatterWrapper>
@@ -21,11 +23,12 @@ export default function Slug({ data: frontMatter, mdxSource }: SlugProps) {
 }
 
 export const getStaticProps = async ({ params }: GetStaticPathProps) => {
-  const { mdxSource, data } = await getPost(params.slug);
+  const { mdxSource, data, content } = await getPost(params.slug);
   return {
     props: {
       mdxSource,
       data,
+      content,
     },
   };
 };
