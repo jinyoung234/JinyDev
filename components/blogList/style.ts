@@ -24,9 +24,12 @@ export const BlogGridWrapper = styled.div`
 export const BlogCategoryWrapper = styled.div<{ isChangeMode: boolean }>`
   background-color: white;
   position: fixed;
+  top: 16%;
   right: 3.2%;
   width: 14%;
   border-radius: 2rem;
+  background-position: center;
+  object-fit: cover;
   ul {
     font-size: 1.8rem;
     font-weight: 500;
