@@ -16,6 +16,7 @@ export interface SeoProps {
 // Blog 컴포넌트 -> BlogCategory 컴포넌트 props type
 export interface BlogCategoryProps {
   category: string;
+  count: number;
 }
 
 // mdx 파일에 있는 metadata type

@@ -1,10 +1,12 @@
+/* eslint-disable prefer-template */
+/* eslint-disable react/no-unescaped-entities */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import { useEffect } from "react";
 import { useSetRecoilState } from "recoil";
 import { categoryNameAtom, initializeAtom, isCategoryAtom } from "../../../atoms";
 import { BlogCategoryProps } from "../../../interfaces/common";
 
-export default function BlogCategory({ category }: BlogCategoryProps) {
+export default function BlogCategory({ category, count }: BlogCategoryProps) {
   const setInitialize = useSetRecoilState(initializeAtom);
   const setCategory = useSetRecoilState(isCategoryAtom);
   const setCategoryName = useSetRecoilState(categoryNameAtom);
@@ -26,5 +28,10 @@ export default function BlogCategory({ category }: BlogCategoryProps) {
       setCategoryName("");
     };
   }, []);
-  return <li onClick={() => handleFilterCategory(category)}>{category}</li>;
+  return (
+    <li onClick={() => handleFilterCategory(category)}>
+      {category}
+      {"(" + count + ")"}
+    </li>
+  );
 }
