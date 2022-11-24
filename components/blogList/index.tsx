@@ -37,11 +37,26 @@ export default function BlogList({ posts }: PostsMapProps) {
       if (tagName.includes(post.frontMatter.tags[i])) filterTag = post.frontMatter.tags[i];
     return filterTag;
   });
-
   const filterPostsCategoryData = postsData.filter(post => post.frontMatter.category === categoryName);
 
   const router = useRouter();
   const isRoute = router.asPath.split("/")[1];
+
+  const [categoryCount, setCategoryCount] = useState([postsData.length, 0, 0, 0, 0, 0, 0, 0, 0]);
+
+  useEffect(() => {
+    postsData.forEach(data => {
+      for (let i = 0; i < DEV_CATEGORY_LIST.length; i++) {
+        if (data.frontMatter.category === DEV_CATEGORY_LIST[i]) {
+          setCategoryCount(prev => {
+            const copy = [...prev];
+            copy[i]++;
+            return copy;
+          });
+        }
+      }
+    });
+  }, []);
   return (
     <BlogWrapper>
       <CategoryTagListWrapper>
@@ -54,8 +69,10 @@ export default function BlogList({ posts }: PostsMapProps) {
           <ul>
             Category
             {isRoute === "dev"
-              ? DEV_CATEGORY_LIST.map(category => <BlogCategory key={category} category={category} />)
-              : BLOG_CATEGORY_LIST.map(category => <BlogCategory key={category} category={category} />)}
+              ? DEV_CATEGORY_LIST.map((category, i) => (
+                  <BlogCategory key={category} category={category} count={categoryCount[i]} />
+                ))
+              : BLOG_CATEGORY_LIST.map(category => <BlogCategory count={1} key={category} category={category} />)}
           </ul>
         </BlogCategoryWrapper>
       )}
