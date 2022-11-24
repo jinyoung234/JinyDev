@@ -4,5 +4,15 @@ export const CONTENT_TITLE = {
   accentContent: "'도전하는 개발자' ",
   name: "손진영 입니다 :)",
 };
-export const DEV_CATEGORY_LIST = ["All", "TypeScript", "JavaScript", "React", "Algorithm", "DevOps", "FrontEnd", "CS"];
+export const DEV_CATEGORY_LIST = [
+  "All",
+  "Next.js",
+  "React",
+  "TypeScript",
+  "JavaScript",
+  "Algorithm",
+  "DevOps",
+  "FrontEnd",
+  "CS",
+];
 export const BLOG_CATEGORY_LIST = ["All", "Remind", "TIL", "Promise", "MonthlyDiary"];
