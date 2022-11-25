@@ -5,6 +5,8 @@ import { MDXProvider } from "@mdx-js/react";
 import CodeBlock from "../components/post/codeBlock";
 import { useEffect, useState } from "react";
 import type { MDXComponents } from "mdx/types";
+import changeRouteGtag from "../utils/changeRouteGtag";
+import router from "next/router";
 
 const mdxComponentObj = {
   code: CodeBlock,
@@ -12,9 +14,19 @@ const mdxComponentObj = {
 
 export default function App({ Component, pageProps }: AppProps) {
   const [mdxComponents, setMdxComponents] = useState<object | null>(null);
+
+  const handleRouteChange = (url: any) => {
+    changeRouteGtag(url);
+  };
+
   useEffect(() => {
     setMdxComponents({ ...mdxComponentObj });
+    router.events.on("routeChangeComplete", handleRouteChange);
+    return () => {
+      router.events.off("routeChangeComplete", handleRouteChange);
+    };
   }, []);
+
   return (
     <RecoilRoot>
       <MDXProvider components={mdxComponents as MDXComponents}>
