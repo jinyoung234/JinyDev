@@ -6,6 +6,7 @@ import { FrontMatterWrapper } from "../../components/post/postTitle/style";
 import { PostContentWrapper } from "../../components/post/postContent/style";
 import Seo from "../../components/seo";
 import Toc from "../../components/post/toc";
+import Utterances from "../../components/post/utterances";
 
 export default function Slug({ data: frontMatter, mdxSource, content }: SlugProps) {
   const { title, description, tags } = frontMatter;
@@ -18,6 +19,7 @@ export default function Slug({ data: frontMatter, mdxSource, content }: SlugProp
       </FrontMatterWrapper>
       <PostContentWrapper>
         <PostContent mdxSource={mdxSource} />
+        <Utterances />
       </PostContentWrapper>
     </>
   );
