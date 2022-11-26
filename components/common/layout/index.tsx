@@ -6,9 +6,9 @@ import { changeMode } from "../../../atoms";
 import { useSsrComplectedState } from "../../../hooks/useSsrComplectedState";
 import { GlobalStyle } from "../../../styles/globalStyle";
 import { colorTheme, lightTheme } from "../../../styles/theme";
-import { ContentLayoutWrapper } from "../../main/content/style";
 import Footer from "../footer";
 import NavBar from "../navbar";
+import { LayoutWrapper } from "./style";
 
 const Layout: React.FC<any> = ({ children }) => {
   const isChangeMode = useRecoilValue(changeMode);
@@ -20,7 +20,7 @@ const Layout: React.FC<any> = ({ children }) => {
     <ThemeProvider theme={isChangeMode ? colorTheme : lightTheme}>
       <GlobalStyle />
       <NavBar />
-      <ContentLayoutWrapper isChangeMode={isChangeMode}>{children}</ContentLayoutWrapper>
+      <LayoutWrapper isChangeMode={isChangeMode}>{children}</LayoutWrapper>
       <Footer />
     </ThemeProvider>
   );
