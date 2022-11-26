@@ -15,7 +15,7 @@ export interface SeoProps {
 
 // Blog 컴포넌트 -> BlogCategory 컴포넌트 props type
 export interface BlogCategoryProps {
-  category: string;
+  categoryData: string;
   count: number;
 }
 
