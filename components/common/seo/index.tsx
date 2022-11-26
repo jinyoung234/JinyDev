@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
 import React from "react";
-import { SeoProps } from "../../interfaces/common";
+import { SeoProps } from "../../../interfaces/common";
 
 function Seo({ title, description, keywords }: SeoProps) {
   const router = useRouter();

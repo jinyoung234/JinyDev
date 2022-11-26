@@ -1,5 +1,5 @@
 import { useRecoilValue } from "recoil";
-import { changeMode } from "../../../atoms";
+import { changeMode } from "../../../../atoms";
 import { TitleWrapper } from "./style";
 
 export interface TitleProps {

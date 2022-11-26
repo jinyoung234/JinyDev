@@ -2,12 +2,12 @@
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
-import { categoryNameAtom, changeMode, initializeAtom, isCategoryAtom, tagNameAtom } from "../../atoms";
-import { DEV_CATEGORY_LIST, BLOG_CATEGORY_LIST } from "../../constants";
-import { PostsMapProps, PostsProps } from "../../interfaces/common";
+import { categoryNameAtom, changeMode, initializeAtom, isCategoryAtom, tagNameAtom } from "../../../atoms";
+import { DEV_CATEGORY_LIST, BLOG_CATEGORY_LIST } from "../../../constants";
+import { PostsMapProps, PostsProps } from "../../../interfaces/common";
 import Blog from "./blog";
-import BlogCategory from "./blogCategory";
-import CategoryTag from "./categoryTag";
+import BlogCategory from "../blogCategory";
+import CategoryTag from "../categoryTag";
 import { BlogCategoryWrapper, BlogGridWrapper, BlogWrapper, CategoryTagListWrapper } from "./style";
 
 export default function BlogList({ posts }: PostsMapProps) {
