@@ -1,24 +1,31 @@
 import styled from "styled-components";
 import { displayAlignCenter, displaySpaceBetween } from "../../../styles/cssStyle";
 
-export const NavWrapper = styled.nav`
+export const NavContainer = styled.nav`
   margin: 0 18%;
   padding: 1.9rem 2.4rem;
   ${displaySpaceBetween}
   align-items: center;
-  div {
-    font-size: 2.5rem;
-    font-weight: 500;
-  }
   ul {
     ${displayAlignCenter}
   }
 `;
 
-export const NavListWrapper = styled.ul<{ path: string }>`
+export const NavLogoWrapper = styled.div`
+  font-size: 2.5rem;
+  font-weight: 500;
+`;
+
+export const NavListContainer = styled.div`
   ul {
     ${displayAlignCenter}
   }
+  li {
+    padding: 0 1.2rem;
+  }
+`;
+
+export const NavListWrapper = styled.ul<{ path: string }>`
   li:first-child {
     cursor: pointer;
   }
