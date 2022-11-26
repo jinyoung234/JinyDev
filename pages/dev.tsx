@@ -1,6 +1,6 @@
 import React from "react";
-import BlogList from "../components/blogList";
-import Seo from "../components/seo";
+import BlogList from "../components/dev-blog/blogList";
+import Seo from "../components/common/seo";
 import { PostsMapProps } from "../interfaces/common";
 import getPost from "../utils/getPost";
 

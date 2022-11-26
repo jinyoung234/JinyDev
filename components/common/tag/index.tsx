@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { FrontMatterProps } from "../../../../interfaces/common";
+import { FrontMatterProps } from "../../../interfaces/common";
 
 interface TagProps {
   post: FrontMatterProps;

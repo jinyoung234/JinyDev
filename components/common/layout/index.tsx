@@ -2,11 +2,11 @@
 import React, { useEffect } from "react";
 import { useRecoilValue } from "recoil";
 import { ThemeProvider } from "styled-components";
-import { changeMode } from "../../atoms";
-import { useSsrComplectedState } from "../../hooks/useSsrComplectedState";
-import { GlobalStyle } from "../../styles/globalStyle";
-import { colorTheme, lightTheme } from "../../styles/theme";
-import { ContentLayoutWrapper } from "../content/style";
+import { changeMode } from "../../../atoms";
+import { useSsrComplectedState } from "../../../hooks/useSsrComplectedState";
+import { GlobalStyle } from "../../../styles/globalStyle";
+import { colorTheme, lightTheme } from "../../../styles/theme";
+import { ContentLayoutWrapper } from "../../main/content/style";
 import Footer from "../footer";
 import NavBar from "../navbar";
 

@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
-import { NAV_LIST } from "../../constants";
-import useChangeMode from "../../hooks/useChangeMode";
+import { NAV_LIST } from "../../../constants";
+import useChangeMode from "../../../hooks/useChangeMode";
 import { NavListWrapper } from "./style";
 
 function NavList() {

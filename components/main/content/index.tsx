@@ -1,7 +1,7 @@
 import React from "react";
 import { useRecoilValue } from "recoil";
-import { changeMode } from "../../atoms";
-import { CONTENT_TITLE } from "../../constants";
+import { changeMode } from "../../../atoms";
+import { CONTENT_TITLE } from "../../../constants";
 import HashTag from "./hashTag";
 import { ContentWrapper } from "./style";
 import Title from "./title";

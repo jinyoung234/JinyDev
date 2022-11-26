@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { displayColumn } from "../../styles/cssStyle";
+import { displayColumn } from "../../../styles/cssStyle";
 
 export const FooterWrapper = styled.footer`
   ${displayColumn}

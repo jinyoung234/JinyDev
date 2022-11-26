@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { displayAlignCenter, displayColumn } from "../../styles/cssStyle";
+import { displayAlignCenter, displayColumn } from "../../../styles/cssStyle";
 
 export const ContentLayoutWrapper = styled.div<{ isChangeMode: boolean }>`
   background-color: ${props => props.theme.bgColor};

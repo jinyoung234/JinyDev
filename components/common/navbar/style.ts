@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { displayAlignCenter, displaySpaceBetween } from "../../styles/cssStyle";
+import { displayAlignCenter, displaySpaceBetween } from "../../../styles/cssStyle";
 
 export const NavWrapper = styled.nav`
   margin: 0 18%;

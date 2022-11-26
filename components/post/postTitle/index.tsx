@@ -1,6 +1,6 @@
 import React from "react";
 import { FrontMatterProps } from "../../../interfaces/common";
-import Tag from "../../blogList/blog/tag";
+import Tag from "../../common/tag";
 
 export interface PostTitleProps {
   frontMatter: FrontMatterProps;

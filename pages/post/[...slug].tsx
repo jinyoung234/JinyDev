@@ -4,7 +4,7 @@ import PostTitle from "../../components/post/postTitle";
 import PostContent from "../../components/post/postContent";
 import { FrontMatterWrapper } from "../../components/post/postTitle/style";
 import { PostContentWrapper } from "../../components/post/postContent/style";
-import Seo from "../../components/seo";
+import Seo from "../../components/common/seo";
 import Toc from "../../components/post/toc";
 import Utterances from "../../components/post/utterances";
 
