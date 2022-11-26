@@ -1,52 +1,71 @@
 import styled from "styled-components";
+import { CategoryTagWrapper } from "../categoryTag/style";
+import { BlogContentWrapper, BlogWrapper } from "./blog/style";
 
-export const BlogWrapper = styled.div`
+export const BlogListContainer = styled.div`
   padding: 2rem 20.5% 2rem 20%;
   position: relative;
 `;
 
-export const CategoryTagListWrapper = styled.div`
+export const CategoryTagContainer = styled.div`
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   justify-items: center;
   gap: 1.8rem 0;
   margin-bottom: 2rem;
+  ${CategoryTagWrapper} {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.4rem 0;
+    margin-right: 1rem;
+  }
 `;
 
-export const BlogGridWrapper = styled.div`
-  width: 100%;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 1.2rem;
-`;
-
-export const BlogCategoryWrapper = styled.div<{ isChangeMode: boolean }>`
+export const BlogCategoryListWrapper = styled.ul`
+  font-size: 1.8rem;
+  font-weight: 500;
+  color: black;
+  border-radius: 2rem;
   background-color: white;
+`;
+
+export const BlogCategoryContainer = styled.div`
   position: fixed;
   top: 16%;
   right: 3.2%;
   width: 14%;
-  border-radius: 2rem;
-  background-position: center;
-  object-fit: cover;
-  ul {
-    font-size: 1.8rem;
-    font-weight: 500;
-    color: black;
+  ${BlogCategoryListWrapper} {
     padding: 2rem 1.4rem;
     li {
       display: flex;
-      font-size: 1.3rem;
       padding: 1.5rem 0;
-      font-weight: 300;
-      :hover {
-        color: ${props => (props.isChangeMode ? "#8AB633" : "#868e96")};
-        transition: color 0.2s ease-in-out;
-      }
     }
     li:first-child {
       margin-top: 1rem;
+    }
+  }
+`;
+
+export const BlogContainer = styled.div`
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1.2rem;
+  ${BlogWrapper} {
+    display: flex;
+    flex-direction: column;
+  }
+  ${BlogContentWrapper} {
+    display: flex;
+    flex-direction: column;
+    padding: 1.4rem 1.4rem;
+    span:first-child {
+      margin-bottom: 1.3rem;
+    }
+    span:nth-child(2) {
+      margin-bottom: 5rem;
     }
   }
 `;
