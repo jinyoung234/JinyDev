@@ -9,6 +9,10 @@ export const BlogWrapper = styled.div`
   box-shadow: ${props => props.theme.shadow.defaultShadow};
   word-break: keep-all;
   border-radius: 2rem;
+  img {
+    background-position: center;
+    object-fit: cover;
+  }
   div:first-child > img {
     width: 100%;
     height: 16rem;
