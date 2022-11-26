@@ -3,22 +3,26 @@ import styled from "styled-components";
 export const PostContentWrapper = styled.article`
   padding: 0 20.5% 3rem 19.8%;
   color: black;
-  font-size: 1.4rem;
+  font-size: 1.7rem;
+
   h1 {
     font-size: 3.6rem;
   }
   h2 {
-    font-size: 2.4rem;
-    margin-top: 3rem;
+    font-size: 2.8rem;
+    margin-top: 6rem;
     margin-bottom: 1.5rem;
   }
   h3 {
-    font-size: 2rem;
-    margin: 2rem 0;
+    font-size: 2.4rem;
+    margin: 4rem 0 2rem 0;
   }
   h4 {
-    font-size: 1.8rem;
-    margin-top: 1.5rem;
+    font-size: 2.2rem;
+    margin: 3rem 0 1rem 0;
+  }
+  b + ol {
+    margin-top: 2rem;
   }
   h5 {
     font-size: 1.5rem;
@@ -30,7 +34,7 @@ export const PostContentWrapper = styled.article`
   h2,
   h3,
   h4 {
-    font-weight: 500;
+    font-weight: 600;
     line-height: 2.5rem;
   }
   hr {
@@ -38,16 +42,21 @@ export const PostContentWrapper = styled.article`
     color: ${props => props.theme.indexColor};
   }
   p {
+    margin: 3rem 0 2rem 0;
     word-wrap: break-word;
     line-height: 2.5rem;
     code {
       background-color: ${props => props.theme.codeColor};
       color: ${props => props.theme.fontColor};
-      padding: 0.2rem 0.6rem;
+      padding: 0.2rem 0.8rem;
+      line-height: 3rem;
       border-radius: 0.6rem;
       font-weight: 600;
       margin: 0 0.2rem;
     }
+  }
+  p + h3 {
+    margin-top: 4rem;
   }
   blockquote {
     border-radius: 1rem;
@@ -55,6 +64,9 @@ export const PostContentWrapper = styled.article`
     background-color: ${props => props.theme.headerColor};
     border-left: 0.5rem solid ${props => props.theme.accentColor.contentColor};
     padding: 0.8rem;
+    p {
+      margin: 0.6rem 0;
+    }
   }
   ul,
   ol {
@@ -76,6 +88,21 @@ export const PostContentWrapper = styled.article`
         left: 0.25rem;
         margin: auto 0;
       }
+      p {
+        margin: 0;
+      }
     }
+  }
+  ul + p {
+    margin-top: 4rem;
+  }
+  b {
+    font-weight: bold;
+  }
+  img {
+    margin: 3rem 0;
+  }
+  hr {
+    opacity: 0.1;
   }
 `;

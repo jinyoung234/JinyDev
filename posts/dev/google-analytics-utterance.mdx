@@ -1,0 +1,241 @@
+---
+title: "구글 애널리틱스, 댓글 적용"
+createdAt: "2022-11-25 15:49"
+description: 구글 애널리틱스, 댓글 적용 방법을 알아보자
+thumbnailUrl: "/image/Google-Analytics.png"
+tags: ["Google Analytics", "Utterance"]
+category: "Next.js"
+---
+
+## Google Analytics?
+
+---
+
+구글이 제공하는 무료 `웹 분석 도구`로써, 구글의 통계 및 빅 데이터 노하우를 바탕으로 `애플리케이션 방문자들의 행동 패턴을 분석`하고, `마케팅 실적이나 UX를 개선`할 수 있도록 도와주는 툴
+
+내 사이트의 `방문자 수 및 방문 목적, 어디서 이탈` 했는지 등의 `상세한 분석`이 가능하다.
+
+### Google Analytics 사용 방법
+
+---
+
+<center>
+  <img src="/image/Google-Analytics-1.png" width="100%" />
+</center>
+
+Google Analytic에 접속 후 사용 등록을 마치고 스트림 세부정보로 들어간다.
+
+측정 ID가 우리가 사용할 ID이다.
+
+<center>
+  <img src="/image/Google-Analytics-3.png" width="100%" />
+  <img src="/image/Google-Analytics-2.png" width="100%" />
+</center>
+
+태그 안내 보기를 들어간 후 직접 설치에 있는 코드를 그대로 프로젝트 파일로 들고온다.
+
+<b>_document.tsx</b>
+
+```tsx
+import Document, { DocumentContext, DocumentInitialProps, Head, Html, Main, NextScript } from "next/document";
+
+export default class MyDocument extends Document {
+  render() {
+    return (
+      <Html lang="ko">
+        <Head>
+          <meta charSet="utf-8" />
+          <script async src="https://www.googletagmanager.com/gtag/js?id=myid" />
+          <script
+            id="google-analytics"
+            dangerouslySetInnerHTML={{
+              __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'myid', {
+              page_path: window.location.pathname,
+            });
+          `,
+            }}
+          />
+        </Head>
+        <body>
+          <Main />
+          <NextScript />
+        </body>
+      </Html>
+    );
+  }
+}
+```
+
+설치할 태그를 \_document.tsx에 들고와 다음과 같이 설정하며, myid라고 적은 부분에 측정 ID를 추가하면 된다.
+
+<b>changeRouteGtag.js</b>
+
+```js
+const changeRouteGtag = url => {
+  window.gtag("config", "myid", {
+    page_path: url,
+  });
+};
+
+export default changeRouteGtag;
+```
+
+페이지 이동 마다 gtag에서 인식이 가능하도록 하기 위해 다음과 같은 함수를 추가한다.
+
+<b>_app.tsx</b>
+
+```tsx
+import router from "next/router";
+
+const handleRouteChange = (url: any) => {
+  changeRouteGtag(url);
+};
+
+useEffect(() => {
+  router.events.on("routeChangeComplete", handleRouteChange);
+  return () => {
+    router.events.off("routeChangeComplete", handleRouteChange);
+  };
+}, []);
+```
+
+\_app.tsx에서 router 이벤트 핸들러를 등록 후 페이지 이동 마찬가지마다 위의 함수를
+실행시킨다.
+
+즉, 페이지가 mount 될 때 마다 핸들러를 추가하며 unmount 마다 적용한 route 핸들러를 제거한다.
+
+### Google Analytics 적용 결과
+
+---
+
+<center>
+  <img src="/image/Google-Analytics-4.png" width="80%" />
+</center>
+
+이렇게 방문자 수가 추적되면 잘 설정한 것이다.
+
+## Utterances
+
+---
+
+> A lightweight comments widget on GitHub issues.
+
+github 레포지토리의 이슈 기능을 활용하여 내 웹 사이트에 댓글 기능을 추가할 수 있도록 도와주는 도구
+
+주로 개발 블로그의 댓글, 위키 페이지 등에서 많이 활용 된다.
+
+### Utterances 사용 이유
+
+---
+
+Utterances와 disqus를 많이 사용하지만 Utterances를 사용하는데는 3가지 이유가 존재한다.
+
+> 1.  댓글 기능을 추가하려면 backend 구현이 필요하지만 Utterances를 통해 Github 계정으로 댓글을 작성할 수 있다.
+> 2.  disqus와 달리 광고가 존재하지 않는다.
+> 3.  적용 방법이 매우 간편하다.
+
+### Utterances 적용 방법
+
+---
+
+<center>
+  <img src="/image/Utterances1.png" width="100%" />
+</center>
+
+<b>[github/utterance](https://github.com/apps/utterances)</b>로 이동하여 install을 진행한다.
+
+<center>
+  <img src="/image/Utterances2.png" width="100%" />
+</center>
+
+install할 계정을 선택한다.
+
+<center>
+  <img src="/image/Utterances3.png" width="100%" />
+</center>
+
+install할 레포지토리를 선택하는데, 2가지 옵션이 존재한다.
+
+All Repositories는 모든 레포지토리에 대해 Utterances를 적용하는 것이고,
+Only Select Repositories는 선택한 레포지토리에 대해서만 Utterances를 적용하는 것이다.
+
+<center>
+  <img src="/image/Utterances4.png" width="100%" />
+</center>
+
+repo에 github 아이디/repository 이름 형태로 작성 한다.
+
+<center>
+  <img src="/image/Utterances5.png" width="100%" />
+</center>
+
+Blog Post Issue Mapping은 게시글과 댓글로 등록된 issue를 어떤 것을 key로 맵핑할지 선택한다.
+JinyDev는 Issue title contains page title로 설정했다.
+
+<center>
+  <img src="/image/Utterances6.png" width="100%" />
+</center>
+
+Utterances의 Template Theme를 선택하면 utterances 생성 script가 생성 된다.
+
+<b>components/post/utterances/index.tsx</b>
+
+```tsx
+import {(useEffect, useRef)} from "react"; import {Container} from "./style";
+export default function Utterances() {
+  const utterances = useRef<HTMLElement | null>(null);
+  useEffect(() => {
+    if (typeof utterances.current === null) return;
+    const scriptElem = document.createElement("script");
+    scriptElem.src = "https://utteranc.es/client.js";
+    scriptElem.async = true;
+    scriptElem.setAttribute("repo", "jinyoung234/JinyDev");
+    scriptElem.setAttribute("issue-term", "title");
+    scriptElem.setAttribute("theme", "github-light");
+    scriptElem.setAttribute("label", "blog-comment");
+    scriptElem.crossOrigin = "anonymous";
+    utterances.current?.appendChild(scriptElem);
+  }, []);
+
+return (
+
+<Container ref={utterances}>
+  <hr />
+</Container>
+); }
+```
+
+다음과 같이 Utterances 컴포넌트를 구성
+
+<b>[...slug].tsx</b>
+
+```tsx
+import Utterances from "../../components/post/utterances";
+<PostContentWrapper>
+  <PostContent mdxSource={mdxSource} />
+  <Utterances />
+</PostContentWrapper>;
+```
+
+slug page에 Utterances를 추가하면 세팅 준비 끝이다.
+
+### Utterances 적용 결과
+
+---
+
+<center>
+  <img src="/image/Utterances7.png" width="100%" />
+</center>
+
+Utterances가 잘 적용된 것을 확인할 수 있다!
+
+## 레퍼런스
+
+> 1. [Next.js에 구글 애널리틱스 적용](https://hoons-up.tistory.com/m/67)
+> 2. [Next.js에서 utterances로 댓글 구현하기](https://se9round.dev/post/Next.js%EC%97%90%EC%84%9C%20utterances%EB%A1%9C%20%EB%8C%93%EA%B8%80%20%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0)
+> 3. [Utterances](https://www.oopy.io/ko/guides/plugins/utterances)

@@ -1,0 +1,239 @@
+---
+title: "JinyDev SEO 최적화 Part 1"
+createdAt: "2022-11-24 12:01"
+description: SEO는 무엇이고 어떻게 설정해야할까?
+thumbnailUrl: "/image/SEO.png"
+tags: ["SEO", "Next.js"]
+category: "Next.js"
+---
+
+## SEO?
+
+---
+
+`Search Engine Optimization`의 약자로 웹에 올리는 `컨텐츠`가 구글, 네이버 등의 `검색엔진`으로 부터
+`제대로 인식이 될 수 있도록 최적화` 하는 작업이다.
+
+`검색자의 의도를 이해`하여 웹 페이지가 검색 결과 페이지에서 잘 노출 될 수 있도록 페이지의 `메타 태그, 링크 구조 개선` 을 통해 `유입 트래픽을 늘리는 방법론` 으로도 정의 할 수 있다.
+
+> `검색 사용자의 검색 의도에 맞게 웹 페이지를 최적화`의 과정을 통해 검색엔진의 평가를 높여
+> 검색 결과 페이지에서 노출을 늘림으로써
+> `검색 엔진`으로 부터의 `웹 페이지 자연 유입 트래픽을 늘리는 방법`
+
+## SEO의 3단계 프로세스
+
+---
+
+`크롤링`, `인덱싱`, `랭킹`
+
+### 1. 크롤링
+
+> `웹 크롤러`가 `웹 페이지의 콘텐츠를 복사`하여 `검색엔진으로 가져오는 과정`
+
+### 2. 인덱싱
+
+> 가져온 `웹 콘텐츠를 주제별로 색인하여 보관하는 과정`
+
+### 3. 랭킹
+
+> 검색 의도에 맞춰 `색인된 콘텐츠에 순위를 부여`한 후 `검색 결과로 제공하는 과정`
+
+## SEO 최적화를 고민하게 된 계기
+
+---
+
+이번에 JinyDev를 개발 하며 `내가 적은 글들을 사람들에게 어떻게 하면 공유 하고 소통 할 수 있을까에 대해 고민`하게 되었고, Google이나 Naver에 상위 노출 하여 `사람들에게 쉽게 다가갈 수 있는 사이트를 개발`하기 위해
+SEO 최적화를 진행하게 되었다.
+
+## SEO in Next.js
+
+---
+
+Next.js는 `Pre-Rendering`으로 구동하는 방식을 채택하고 있다. CSR만 지원하는 React와는 다르게 `SSR, SSG 방식이 가능한 프레임워크`이다.
+
+초기 로딩 시 `프론트 서버에서 모든 데이터를 html에 렌더링 하여 response` 하기 때문에 검색 엔진 봇이 크롤링 하기 쉬워져 `검색 엔진 최적화(SEO)에 유리한 구조`를 가지고 있다.
+
+## SEO 최적화 과정
+
+---
+
+### 1. Google
+
+<center>
+  <img src="/image/Google1.png" width="60%" />
+</center>
+
+- Google Search Console로 접속 후 URL 접두어에 있는 URL을 입력 후 계속 버튼 클릭
+
+<center>
+  <img src="/image/Google2.png" width="60%" />
+</center>
+
+- 그림과 같이 HTML 파일을 다운 후 public 폴더에 해당 파일 추가 (Verification을 위함)
+
+여기 까지 끝냈다면 이제 sitemap.xml과 robots.txt을 설정해야 한다.
+
+#### robots.txt
+
+---
+
+검색의 크롤링 로봇이 웹에 접근 시 `로봇이 지켜야 하는 규칙`과 `사이트 맵 파일의 위치를 알려주는 역할`을 하는 파일
+
+실제로 robots.txt에 기록된 내용을 통해서 `웹 사이트의 디렉토리 별로 크롤링 할 수 있는지 없는지를 지정`할 수 있는데
+만약 이 파일에 아무런 내용이 없다면 `검색 엔진의 크롤링 봇들은 웹 사이트에서 확인할 수 있는 모든 콘텐츠 들을 색인하고 검색 결과에 노출` 시키게 된다.
+
+<b>robots의 역할</b>
+
+> 1.  웹 사이트 내의 특정 콘텐츠, 웹 페이지, 서브 폴더, 디렉토리로의 크롤러 접근 제어
+> 2.  사이트 맵 위치 전달
+> 3.  검색 크롤러에 의한 과부하 방지
+
+```txt
+User-agent: *
+Allow: /
+Sitemap: https://jinydev.site/sitemap.xml
+Disallow: /tags
+```
+
+#### sitemap.xml
+
+---
+
+sitemap.xml 파일은 검색 엔진 `크롤링 봇에게 웹 사이트에서 크롤링 해야 할 URL을 전달`한다. 사이트 맵
+파일은 해당 사이트의 URL 모두를 xml 파일 형식으로 포함하게 되는데, 웹 사이트 운영자는 각 `URL`(loc)과 추가 정보로
+이 URL 콘텐츠의 `최종 업데이트 시점 및 빈도`(lastmod), `URL 대비 상대적인 중요도 정보`(priority)를 담을 수 있다.
+
+이러한 정보들을 통해 `웹 사이트를 보다 효율적으로 크롤링` 할 수 있게 된다. 또한, xml 파일은 사이트 콘텐츠의 변화에 맞춰 늘 업데이트 되어야
+하기 때문에 사이트의 변화에 따라 매일 자동으로 업데이트 되도록 하는 것이 바람직하다.
+
+<b>sitemap의 역할</b>
+
+> 1.  `크롤링 로봇이 바로 URL에 접근` 하도록 도와주는 징검다리 역할
+> 2.  웹 마스터가 서치 콘솔 같은 툴을 통해 `검색 엔진에 등록`할 수 있도록 하는 역할
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"
+>
+  <url>
+    <loc>https://jinydev.site/</loc>
+    <lastmod>2022-11-23T15:35:51.953Z</lastmod>
+    <priority>1.00</priority>
+  </url>
+</urlset>
+```
+
+- sitemap 같은 경우 자동 생성하는 js 파일을 통해 생성하는 것이 좋다.
+
+#### 검증 및 사이트 맵 등록
+
+이렇게 sitemap.xml과 robot.txt, Verification을 설정 했다면 build를 하여 배포를 진행해보자
+
+```yml
+name: CI/CD
+on:
+  pull_request:
+    branches: ["main"]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: git checkout
+        uses: actions/checkout@v2
+
+      - name: use node.js version 18.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+
+      - name: Install dependencies
+        run: npm ci --legacy-peer-deps
+
+      - name: build
+        run: npm run build
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: Deploy to S3
+        run: aws s3 sync ./${{secrets.BUILD_DIRECTORY}} ${{secrets.AWS_S3_BUCKET_NAME}} --acl public-read --delete
+
+      - name: Invalidate CloudFront Cache
+        run: aws cloudfront create-invalidation --distribution-id ${{secrets.AWS_CLOUDFRONT_DISTRIBUTION_ID}} --paths "/*"
+```
+
+- JinyDev는 AWS S3, AWS CloudFront, Github Actions를 통해 CI/CD 설정을 하였다.
+- pull_request를 통해 자동으로 배포하게 된다.
+
+<center>
+  <img src="/image/Google3.png" width="70%" />
+</center>
+
+이제 다시 Search Console로 들어가 검증을 완료 후 사이트 맵을 등록하면 준비 완료다.
+
+<center>
+  <img src="/image/Google4.png" width="70%" />
+</center>
+
+이런 화면으로 전환되면 등록이 완료된 것이다.
+
+### 2. Naver
+
+<center>
+  <img src="/image/Naver1.png" width="70%" />
+</center>
+
+<center>
+  <img src="/image/Naver2.png" width="70%" />
+</center>
+
+Search Advisor에 접속하여 웹마스터 도구 클릭 후 사이트 등록
+
+<center>
+  <img src="/image/Naver3.png" width="70%" />
+</center>
+
+Google과 마찬가지로 다운로드 후 public 폴더에 추가(캡처를 못해서 다른 도메인으로 대체했다.)
+
+<center>
+  <img src="/image/Naver4.png" width="70%" />
+</center>
+
+사이트 목록에 있는 내 사이트 클릭
+
+<center>
+  <img src="/image/Naver5.png" width="70%" />
+</center>
+
+<center>
+  <img src="/image/Naver6.png" width="70%" />
+</center>
+
+Google과 다르게 네이버는 robot과 sitemap 모두 등록해야 한다.
+
+<p>robot.txt, sitemap.xml 파일 생성 & 프로젝트 빌드 후 수집 요청을 통해 robot 등록하고 sitemap을 제출</p>
+
+<center>
+  <img src="/image/Naver7.png" width="70%" />
+</center>
+
+웹 사이트 수집을 통해 수집 요청할 url을 입력 후 확인 버튼을 누른다.
+
+<center>
+  <img src="/image/Naver8.png" width="70%" />
+</center>
+
+잘 됬는지 Test를 위해 사이트 간단 체크에 들어가 url 입력 후 체크 진행
+
+<center>
+  <img src="/image/Naver9.png" width="70%" />
+</center>
+
+다음과 같이 모두 체크가 되있다면 완료 된 것
