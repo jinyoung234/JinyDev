@@ -1,12 +1,12 @@
 /* eslint-disable prefer-template */
-/* eslint-disable react/no-unescaped-entities */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import { useEffect } from "react";
-import { useSetRecoilState } from "recoil";
-import { categoryNameAtom, initializeAtom, isCategoryAtom } from "../../../atoms";
+import { useRecoilValue, useSetRecoilState } from "recoil";
+import { categoryNameAtom, changeMode, initializeAtom, isCategoryAtom } from "../../../atoms";
 import { BlogCategoryProps } from "../../../interfaces/common";
+import { BlogCategoryWrapper } from "./style";
 
-export default function BlogCategory({ category, count }: BlogCategoryProps) {
+export default function BlogCategory({ categoryData, count }: BlogCategoryProps) {
   const setInitialize = useSetRecoilState(initializeAtom);
   const setCategory = useSetRecoilState(isCategoryAtom);
   const setCategoryName = useSetRecoilState(categoryNameAtom);
@@ -28,10 +28,11 @@ export default function BlogCategory({ category, count }: BlogCategoryProps) {
       setCategoryName("");
     };
   }, []);
+  const isChangeMode = useRecoilValue(changeMode);
   return (
-    <li onClick={() => handleFilterCategory(category)}>
-      {category}
+    <BlogCategoryWrapper isChangeMode={isChangeMode} onClick={() => handleFilterCategory(categoryData)}>
+      {categoryData}
       {"(" + count + ")"}
-    </li>
+    </BlogCategoryWrapper>
   );
 }

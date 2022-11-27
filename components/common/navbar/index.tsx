@@ -1,14 +1,16 @@
 import Link from "next/link";
 import NavList from "./NavList";
-import { NavWrapper } from "./style";
+import { NavContainer, NavListContainer, NavLogoWrapper } from "./style";
 
 export default function NavBar() {
   return (
-    <NavWrapper>
+    <NavContainer>
       <Link href="/">
-        <div>JinyDev</div>
+        <NavLogoWrapper>JinyDev</NavLogoWrapper>
       </Link>
-      <NavList />
-    </NavWrapper>
+      <NavListContainer>
+        <NavList />
+      </NavListContainer>
+    </NavContainer>
   );
 }

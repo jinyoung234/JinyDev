@@ -2,17 +2,21 @@
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
-import { categoryNameAtom, changeMode, initializeAtom, isCategoryAtom, tagNameAtom } from "../../../atoms";
+import { categoryNameAtom, initializeAtom, isCategoryAtom, tagNameAtom } from "../../../atoms";
 import { DEV_CATEGORY_LIST, BLOG_CATEGORY_LIST } from "../../../constants";
 import { PostsMapProps, PostsProps } from "../../../interfaces/common";
 import Blog from "./blog";
 import BlogCategory from "../blogCategory";
 import CategoryTag from "../categoryTag";
-import { BlogCategoryWrapper, BlogGridWrapper, BlogWrapper, CategoryTagListWrapper } from "./style";
+import {
+  BlogCategoryContainer,
+  BlogCategoryListWrapper,
+  BlogContainer,
+  BlogListContainer,
+  CategoryTagContainer,
+} from "./style";
 
 export default function BlogList({ posts }: PostsMapProps) {
-  const isChangeMode = useRecoilValue(changeMode);
-
   const [windowSize, setWindowSize] = useState<number | null>(null);
 
   useEffect(() => {
@@ -58,25 +62,25 @@ export default function BlogList({ posts }: PostsMapProps) {
     });
   }, []);
   return (
-    <BlogWrapper>
-      <CategoryTagListWrapper>
+    <BlogListContainer>
+      <CategoryTagContainer>
         {tagList.map(tag => (
           <CategoryTag tag={tag} key={tag} />
         ))}
-      </CategoryTagListWrapper>
+      </CategoryTagContainer>
       {windowSize && windowSize >= 1420 && (
-        <BlogCategoryWrapper isChangeMode={isChangeMode}>
-          <ul>
+        <BlogCategoryContainer>
+          <BlogCategoryListWrapper>
             Category
             {isRoute === "dev"
               ? DEV_CATEGORY_LIST.map((category, i) => (
-                  <BlogCategory key={category} category={category} count={categoryCount[i]} />
+                  <BlogCategory key={category} categoryData={category} count={categoryCount[i]} />
                 ))
-              : BLOG_CATEGORY_LIST.map(category => <BlogCategory count={1} key={category} category={category} />)}
-          </ul>
-        </BlogCategoryWrapper>
+              : BLOG_CATEGORY_LIST.map(category => <BlogCategory count={1} key={category} categoryData={category} />)}
+          </BlogCategoryListWrapper>
+        </BlogCategoryContainer>
       )}
-      <BlogGridWrapper>
+      <BlogContainer>
         {isInitialize
           ? postsData.map(post => <Blog key={post.frontMatter.title} slug={post.slug} post={post.frontMatter} />)
           : ""}
@@ -88,7 +92,7 @@ export default function BlogList({ posts }: PostsMapProps) {
         {!isInitialize && !isCategory
           ? filterPostsData.map(post => <Blog key={post.frontMatter.title} slug={post.slug} post={post.frontMatter} />)
           : ""}
-      </BlogGridWrapper>
-    </BlogWrapper>
+      </BlogContainer>
+    </BlogListContainer>
   );
 }

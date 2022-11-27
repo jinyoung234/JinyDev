@@ -1,6 +1,7 @@
 import { MDXRemoteSerializeResult } from "next-mdx-remote";
 import React from "react";
 
+/* Common Interface*/
 // Layout 컴포넌트 props type
 export interface LayoutProps {
   chlidren: React.ReactNode;
@@ -13,13 +14,7 @@ export interface SeoProps {
   keywords: string[];
 }
 
-// Blog 컴포넌트 -> BlogCategory 컴포넌트 props type
-export interface BlogCategoryProps {
-  category: string;
-  count: number;
-}
-
-// mdx 파일에 있는 metadata type
+// Tag, PostTitle 컴포넌트 props type(mdx 파일에 있는 metadata type)
 export interface FrontMatterProps {
   title: string;
   createdAt: string;
@@ -28,8 +23,10 @@ export interface FrontMatterProps {
   tags: string[];
   category: string;
 }
+/* !Common Interface*/
 
-// mdx 파일에서 가져온 data type
+/* Dev & Blog Page Interface */
+// Dev & Blog page & BlogList 컴포넌트 props Type(mdx 파일에서 가져온 data type)
 export interface PostsMapProps {
   [key: string]: {
     frontMatter: FrontMatterProps;
@@ -37,15 +34,16 @@ export interface PostsMapProps {
   };
 }
 
+// Blog List 컴포넌트 postsData type
 export interface PostsProps {
   frontMatter: FrontMatterProps;
   slug: string;
 }
 
-// Blog 컴포넌트 props type
-export interface BlogProps {
-  post: FrontMatterProps;
-  slug: string;
+// BlogCategory 컴포넌트 props type
+export interface BlogCategoryProps {
+  categoryData: string;
+  count: number;
 }
 
 // CategoryTag 컴포넌트 props type
@@ -53,11 +51,19 @@ export interface CategoryTagProps {
   tag: string;
 }
 
-// Slug page props type
-export interface SlugProps {
-  mdxSource: MDXRemoteSerializeResult;
-  data: FrontMatterProps;
+// Blog 컴포넌트 props type
+export interface BlogProps {
+  post: FrontMatterProps;
+  slug: string;
+}
+/* !Dev & Blog page Interface*/
+
+/* Slug page Interface*/
+// Slug page & Post Template props type
+export interface PostProps {
   content: string;
+  data: FrontMatterProps;
+  mdxSource: MDXRemoteSerializeResult;
 }
 
 // Slug page getStaticPath type
@@ -67,8 +73,8 @@ export interface GetStaticPathProps {
   };
 }
 
-// CodeBlock Component type
-export interface CodeProps {
+// CodeBlock Component props type
+export interface CodeBlockProps {
   children: string;
   className: string;
 }
@@ -82,3 +88,4 @@ export interface TocItemProps {
   depth: number;
   isSelected: boolean;
 }
+/* !Slug page Interface*/

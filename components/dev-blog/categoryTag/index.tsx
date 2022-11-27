@@ -27,7 +27,7 @@ export default function CategoryTag({ tag }: CategoryTagProps) {
 
   return (
     <CategoryTagWrapper onClick={() => handleFilterTag(tag)} isChangeMode={isChangeMode}>
-      {tag}
+      <span>{tag}</span>
     </CategoryTagWrapper>
   );
 }

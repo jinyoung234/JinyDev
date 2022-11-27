@@ -1,26 +1,14 @@
 import { getAllPost, getPost } from "../../utils/mdxParsing";
-import { GetStaticPathProps, SlugProps } from "../../interfaces/common";
-import PostTitle from "../../components/post/postTitle";
-import PostContent from "../../components/post/postContent";
-import { FrontMatterWrapper } from "../../components/post/postTitle/style";
-import { PostContentWrapper } from "../../components/post/postContent/style";
+import { GetStaticPathProps, PostProps } from "../../interfaces/common";
 import Seo from "../../components/common/seo";
-import Toc from "../../components/post/toc";
-import Utterances from "../../components/post/utterances";
+import Post from "../../components/post";
 
-export default function Slug({ data: frontMatter, mdxSource, content }: SlugProps) {
+export default function Slug({ data: frontMatter, mdxSource, content }: PostProps) {
   const { title, description, tags } = frontMatter;
   return (
     <>
       <Seo keywords={tags} description={description} title={title} />
-      <Toc content={content} />
-      <FrontMatterWrapper>
-        <PostTitle frontMatter={frontMatter} />
-      </FrontMatterWrapper>
-      <PostContentWrapper>
-        <PostContent mdxSource={mdxSource} />
-        <Utterances />
-      </PostContentWrapper>
+      <Post data={frontMatter} mdxSource={mdxSource} content={content} />
     </>
   );
 }

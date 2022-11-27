@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import styled from "styled-components";
+import { UtterancesWrapper } from "./style";
 
 export default function Utterances() {
   const utterances = useRef<HTMLElement | null>(null);
@@ -17,15 +17,8 @@ export default function Utterances() {
   }, []);
 
   return (
-    <Container ref={utterances}>
+    <UtterancesWrapper ref={utterances}>
       <hr />
-    </Container>
+    </UtterancesWrapper>
   );
 }
-
-const Container = styled.section`
-  margin-top: 5rem;
-  .utterances {
-    max-width: 80%;
-  }
-`;

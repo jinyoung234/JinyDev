@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const CodeWrapper = styled.div`
+export const CodeBlockContainer = styled.div`
   border-radius: 1rem;
   overflow: hidden;
   background-color: #2f3135;
@@ -8,7 +8,7 @@ export const CodeWrapper = styled.div`
   margin: 2rem 0;
 `;
 
-export const CodeStatusBar = styled.div`
+export const StatusBarWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -37,7 +37,7 @@ export const CodeStatusBar = styled.div`
   }
 `;
 
-export const TableWrapper = styled.div`
+export const TableContainer = styled.div`
   overflow-x: auto;
   overflow-y: hidden;
   padding: 1rem 0.5rem 1.8rem 0.5rem;
@@ -54,13 +54,13 @@ export const TableWrapper = styled.div`
   }
 `;
 
-export const Table = styled.table`
+export const TableWrapper = styled.table`
   display: table;
   width: 100%;
   vertical-align: middle;
 `;
 
-export const LineNo = styled.td`
+export const LineNoWrapper = styled.td`
   user-select: none;
   color: #4a545c;
   text-align: center;
@@ -75,12 +75,12 @@ export const LineNo = styled.td`
   }
 `;
 
-export const Line = styled.tr`
+export const LineWrapper = styled.tr`
   transition: all 0.05s ease;
   line-height: 1.5;
   &:hover {
     background-color: #20202099;
-    ${LineNo} {
+    ${LineNoWrapper} {
       color: white;
     }
   }

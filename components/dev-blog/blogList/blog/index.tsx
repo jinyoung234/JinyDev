@@ -1,22 +1,22 @@
 import React from "react";
 import useMovePage from "../../../../hooks/useMovePage";
 import { BlogProps } from "../../../../interfaces/common";
-import { BlogWrapper } from "./style";
+import { BlogWrapper, BlogImageWrapper, BlogContentWrapper } from "./style";
 import Tag from "../../../common/tag";
 
 function Blog({ post, slug }: BlogProps) {
   const { handleMovePage } = useMovePage(slug);
   return (
     <BlogWrapper onClick={handleMovePage}>
-      <div>
+      <BlogImageWrapper>
         <img src={post?.thumbnailUrl} alt="jinyoung" />
-      </div>
-      <div id="contentContainer">
+      </BlogImageWrapper>
+      <BlogContentWrapper>
         <span>{post?.title}</span>
         <span>{post?.description}</span>
         <span>{post?.createdAt}</span>
         <Tag post={post} />
-      </div>
+      </BlogContentWrapper>
     </BlogWrapper>
   );
 }

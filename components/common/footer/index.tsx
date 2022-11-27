@@ -1,12 +1,14 @@
 import React from "react";
 import { Icon } from "@iconify/react";
 import Link from "next/link";
-import { FooterWrapper, FooterListWrapper } from "./style";
+import { FooterListWrapper, FooterContainer, FooterWritterWrapper } from "./style";
 
 export default function Footer() {
   return (
-    <FooterWrapper>
-      <p>© | 2022 JinyDev All rights reserved.</p>
+    <FooterContainer>
+      <FooterWritterWrapper>
+        <p>© | 2022 JinyDev All rights reserved.</p>
+      </FooterWritterWrapper>
       <FooterListWrapper>
         <Link href="https://www.linkedin.com/in/%EC%98%81-%EC%A7%84-80851a255/">
           <Icon icon="iconoir:linkedin" />
@@ -18,6 +20,6 @@ export default function Footer() {
           <Icon icon="bi:instagram" />
         </Link>
       </FooterListWrapper>
-    </FooterWrapper>
+    </FooterContainer>
   );
 }
