@@ -3,7 +3,7 @@ import { GetStaticPathProps, PostProps } from "../../interfaces/common";
 import Seo from "../../components/common/seo";
 import Post from "../../components/post";
 
-export default function Slug({ data: frontMatter, mdxSource, content }: PostProps) {
+export default function PostPage({ data: frontMatter, mdxSource, content }: PostProps) {
   const { title, description, tags } = frontMatter;
   return (
     <>

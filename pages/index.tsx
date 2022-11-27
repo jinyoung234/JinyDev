@@ -1,7 +1,7 @@
 import Content from "../components/main/content";
 import Seo from "../components/common/seo";
 
-export default function Home() {
+export default function MainPage() {
   return (
     <>
       <Seo

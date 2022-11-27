@@ -4,7 +4,7 @@ import Seo from "../components/common/seo";
 import { PostsMapProps } from "../interfaces/common";
 import getPost from "../utils/getPost";
 
-export default function Dev({ posts }: PostsMapProps) {
+export default function DevPage({ posts }: PostsMapProps) {
   return (
     <>
       <Seo
