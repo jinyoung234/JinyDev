@@ -3,49 +3,56 @@
 import React from "react";
 import Highlight, { defaultProps } from "prism-react-renderer";
 import theme from "prism-react-renderer/themes/nightOwl";
-import { CodeStatusBar, CodeWrapper, Line, LineNo, Table, TableWrapper } from "./style";
-import { CodeProps } from "../../../interfaces/common";
+import {
+  CodeBlockContainer,
+  LineNoWrapper,
+  LineWrapper,
+  StatusBarWrapper,
+  TableContainer,
+  TableWrapper,
+} from "./style";
+import { CodeBlockProps } from "../../../interfaces/common";
 
-function Code({ children, className }: CodeProps) {
+function CodeBlock({ children, className }: CodeBlockProps) {
   const language = className ? className.replace(/language-/, "") : "";
   return (
     <>
       {!className ? (
         <code>{children}</code>
       ) : (
-        <CodeWrapper>
-          <CodeStatusBar>
+        <CodeBlockContainer>
+          <StatusBarWrapper>
             <span>{language}</span>
             <div>
               <span> </span>
               <span> </span>
               <span> </span>
             </div>
-          </CodeStatusBar>
+          </StatusBarWrapper>
           <Highlight {...defaultProps} theme={theme} code={children.trim()} language={language as any}>
             {({ tokens, getLineProps, getTokenProps }) => (
-              <TableWrapper>
-                <Table>
+              <TableContainer>
+                <TableWrapper>
                   <tbody>
                     {tokens.map((line, i) => (
-                      <Line {...getLineProps({ line, key: i })}>
-                        <LineNo>{language ? i + 1 : ""}</LineNo>
+                      <LineWrapper {...getLineProps({ line, key: i })}>
+                        <LineNoWrapper>{language ? i + 1 : ""}</LineNoWrapper>
                         <td>
                           {line.map((token, key) => (
                             <span {...getTokenProps({ token, key })} />
                           ))}
                         </td>
-                      </Line>
+                      </LineWrapper>
                     ))}
                   </tbody>
-                </Table>
-              </TableWrapper>
+                </TableWrapper>
+              </TableContainer>
             )}
           </Highlight>
-        </CodeWrapper>
+        </CodeBlockContainer>
       )}
     </>
   );
 }
 
-export default Code;
+export default CodeBlock;
