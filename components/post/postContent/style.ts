@@ -1,28 +1,20 @@
 import styled from "styled-components";
 
-export const PostContentWrapper = styled.article`
-  padding: 0 20.5% 3rem 19.8%;
+export const PostContentWrapper = styled.div`
   color: black;
   font-size: 1.7rem;
-
   h1 {
     font-size: 3.6rem;
   }
   h2 {
     font-size: 2.8rem;
-    margin-top: 6rem;
-    margin-bottom: 1.5rem;
   }
   h3 {
     font-size: 2.4rem;
-    margin: 4rem 0 2rem 0;
   }
   h4 {
     font-size: 2.2rem;
     margin: 3rem 0 1rem 0;
-  }
-  b + ol {
-    margin-top: 2rem;
   }
   h5 {
     font-size: 1.5rem;
@@ -37,9 +29,15 @@ export const PostContentWrapper = styled.article`
     font-weight: 600;
     line-height: 2.5rem;
   }
+  h2,
+  h3 {
+    margin-top: 6rem;
+    margin-bottom: 2rem;
+  }
   hr {
     border-style: solid;
     color: ${props => props.theme.indexColor};
+    opacity: 0.1;
   }
   p {
     margin: 3rem 0 2rem 0;
@@ -55,7 +53,7 @@ export const PostContentWrapper = styled.article`
       margin: 0 0.2rem;
     }
   }
-  p + h3 {
+  p + b {
     margin-top: 4rem;
   }
   blockquote {
@@ -99,10 +97,10 @@ export const PostContentWrapper = styled.article`
   b {
     font-weight: bold;
   }
+  b + ol {
+    margin-top: 2rem;
+  }
   img {
     margin: 3rem 0;
-  }
-  hr {
-    opacity: 0.1;
   }
 `;
