@@ -26,8 +26,8 @@ export interface FrontMatterProps {
 /* !Common Interface*/
 
 /* Dev & Blog Page Interface */
-// Dev & Blog page & BlogList 컴포넌트 props Type(mdx 파일에서 가져온 data type)
-export interface PostsMapProps {
+// Dev & Blog page & BlogTemplate 컴포넌트 props Type(mdx 파일에서 가져온 data type)
+export interface BlogProps {
   [key: string]: {
     frontMatter: FrontMatterProps;
     slug: string;
@@ -51,8 +51,8 @@ export interface CategoryTagProps {
   tag: string;
 }
 
-// Blog 컴포넌트 props type
-export interface BlogProps {
+// BlogCard 컴포넌트 props type
+export interface BlogCardProps {
   post: FrontMatterProps;
   slug: string;
 }

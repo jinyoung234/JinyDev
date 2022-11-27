@@ -3,7 +3,7 @@
 // import { PostsMapProps } from "../interfaces/common";
 // import getPost from "../utils/getPost";
 
-export default function Blog() {
+export default function BlogPage() {
   return (
     <>
       {/* <Seo title="Blog" /> */}

@@ -1,22 +1,22 @@
 /* eslint-disable no-plusplus */
 import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
-import { categoryNameAtom, initializeAtom, isCategoryAtom, tagNameAtom } from "../../../atoms";
-import { DEV_CATEGORY_LIST, BLOG_CATEGORY_LIST } from "../../../constants";
-import { PostsMapProps, PostsProps } from "../../../interfaces/common";
-import Blog from "./blog";
-import BlogCategory from "../blogCategory";
-import CategoryTag from "../categoryTag";
+import { categoryNameAtom, initializeAtom, isCategoryAtom, tagNameAtom } from "../../atoms";
+import { BLOG_CATEGORY_LIST, DEV_CATEGORY_LIST } from "../../constants";
+import { BlogProps, PostsProps } from "../../interfaces/common";
+import BlogCategory from "./blogCategory";
+import BlogCard from "./blogCard";
 import {
+  BlogCardContainer,
   BlogCategoryContainer,
   BlogCategoryListWrapper,
   BlogContainer,
-  BlogListContainer,
   CategoryTagContainer,
 } from "./style";
+import CategoryTag from "./categoryTag";
 
-export default function BlogList({ posts }: PostsMapProps) {
+export default function Blog({ posts }: BlogProps) {
   const [windowSize, setWindowSize] = useState<number | null>(null);
 
   useEffect(() => {
@@ -50,7 +50,7 @@ export default function BlogList({ posts }: PostsMapProps) {
 
   useEffect(() => {
     postsData.forEach(data => {
-      for (let i = 0; i < DEV_CATEGORY_LIST.length; i++) {
+      DEV_CATEGORY_LIST.forEach((category, i) => {
         if (data.frontMatter.category === DEV_CATEGORY_LIST[i]) {
           setCategoryCount(prev => {
             const copy = [...prev];
@@ -58,11 +58,11 @@ export default function BlogList({ posts }: PostsMapProps) {
             return copy;
           });
         }
-      }
+      });
     });
   }, []);
   return (
-    <BlogListContainer>
+    <BlogContainer>
       <CategoryTagContainer>
         {tagList.map(tag => (
           <CategoryTag tag={tag} key={tag} />
@@ -80,19 +80,21 @@ export default function BlogList({ posts }: PostsMapProps) {
           </BlogCategoryListWrapper>
         </BlogCategoryContainer>
       )}
-      <BlogContainer>
+      <BlogCardContainer>
         {isInitialize
-          ? postsData.map(post => <Blog key={post.frontMatter.title} slug={post.slug} post={post.frontMatter} />)
+          ? postsData.map(post => <BlogCard key={post.frontMatter.title} slug={post.slug} post={post.frontMatter} />)
           : ""}
         {!isInitialize && isCategory
           ? filterPostsCategoryData.map(post => (
-              <Blog key={post.frontMatter.title} slug={post.slug} post={post.frontMatter} />
+              <BlogCard key={post.frontMatter.title} slug={post.slug} post={post.frontMatter} />
             ))
           : ""}
         {!isInitialize && !isCategory
-          ? filterPostsData.map(post => <Blog key={post.frontMatter.title} slug={post.slug} post={post.frontMatter} />)
+          ? filterPostsData.map(post => (
+              <BlogCard key={post.frontMatter.title} slug={post.slug} post={post.frontMatter} />
+            ))
           : ""}
-      </BlogContainer>
-    </BlogListContainer>
+      </BlogCardContainer>
+    </BlogContainer>
   );
 }

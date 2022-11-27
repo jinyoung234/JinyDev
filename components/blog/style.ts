@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import { CategoryTagWrapper } from "../categoryTag/style";
-import { BlogContentWrapper, BlogWrapper } from "./blog/style";
+import { CategoryTagWrapper } from "./categoryTag/style";
+import { BlogCardContentWrapper, BlogCardWrapper } from "./blogCard/style";
 
-export const BlogListContainer = styled.div`
+export const BlogContainer = styled.div`
   padding: 2rem 20.5% 2rem 20%;
   position: relative;
 `;
@@ -48,16 +48,16 @@ export const BlogCategoryContainer = styled.div`
   }
 `;
 
-export const BlogContainer = styled.div`
+export const BlogCardContainer = styled.div`
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 1.2rem;
-  ${BlogWrapper} {
+  ${BlogCardWrapper} {
     display: flex;
     flex-direction: column;
   }
-  ${BlogContentWrapper} {
+  ${BlogCardContentWrapper} {
     display: flex;
     flex-direction: column;
     padding: 1.4rem 1.4rem;
