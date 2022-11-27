@@ -1,10 +1,10 @@
 import React from "react";
-import BlogList from "../components/dev-blog/blogList";
+import Blog from "../components/blog";
 import Seo from "../components/common/seo";
-import { PostsMapProps } from "../interfaces/common";
+import { BlogProps } from "../interfaces/common";
 import getPost from "../utils/getPost";
 
-export default function DevPage({ posts }: PostsMapProps) {
+export default function DevPage({ posts }: BlogProps) {
   return (
     <>
       <Seo
@@ -12,7 +12,7 @@ export default function DevPage({ posts }: PostsMapProps) {
         description="프론트엔드 지망생 손진영의 개발 블로그"
         keywords={["개발", "프론트엔드", "손진영", "진영", "개발자", "frontend", "React", "Nextjs", "TypeScript"]}
       />
-      <BlogList posts={posts} />;
+      <Blog posts={posts} />
     </>
   );
 }

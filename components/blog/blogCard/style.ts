@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const BlogWrapper = styled.div`
+export const BlogCardWrapper = styled.div`
   cursor: pointer;
   background-color: ${props => props.theme.accentColor.contentColor};
   color: ${props => props.theme.fontColor};
@@ -9,7 +9,7 @@ export const BlogWrapper = styled.div`
   border-radius: 2rem;
 `;
 
-export const BlogImageWrapper = styled.div`
+export const BlogCardImageWrapper = styled.div`
   img {
     width: 100%;
     height: 16rem;
@@ -19,7 +19,7 @@ export const BlogImageWrapper = styled.div`
   }
 `;
 
-export const BlogContentWrapper = styled.div`
+export const BlogCardContentWrapper = styled.div`
   span:first-child {
     font-size: 1.9rem;
     font-weight: 600;
