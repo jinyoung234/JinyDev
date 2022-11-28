@@ -56,7 +56,9 @@ export interface PostsProps {
 
 // BlogCategory 컴포넌트 props type
 export interface BlogCategoryProps {
+  /** 카테고리 이름 */
   categoryData: string;
+  /** 게시물 총 개수 */
   count: number;
 }
 
