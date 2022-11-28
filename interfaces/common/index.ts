@@ -1,6 +1,15 @@
 import { MDXRemoteSerializeResult } from "next-mdx-remote";
 import React from "react";
 
+export interface TitleProps {
+  /** 희망하는 직무 */
+  jobContent: string;
+  /** 강조하고 싶은 말 */
+  accentContent: string;
+  /** 이름 */
+  name: string;
+}
+
 /* Common Interface*/
 // Layout 컴포넌트 props type
 export interface LayoutProps {
