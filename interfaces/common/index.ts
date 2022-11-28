@@ -62,6 +62,7 @@ export interface BlogCategoryProps {
 
 // CategoryTag 컴포넌트 props type
 export interface CategoryTagProps {
+  /** tag name */
   tag: string;
 }
 
