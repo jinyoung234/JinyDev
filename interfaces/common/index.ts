@@ -70,7 +70,9 @@ export interface CategoryTagProps {
 
 // BlogCard 컴포넌트 props type
 export interface BlogCardProps {
+  /** mdx file의 meta data */
   post: FrontMatterProps;
+  /** mdx file의 file name(.mdx 제외) */
   slug: string;
 }
 /* !Dev & Blog page Interface*/
