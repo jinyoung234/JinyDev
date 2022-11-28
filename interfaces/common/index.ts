@@ -32,6 +32,11 @@ export interface FrontMatterProps {
   tags: string[];
   category: string;
 }
+
+export interface TagProps {
+  /** mdxFile `meta data`(tags) */
+  tags: string[];
+}
 /* !Common Interface*/
 
 /* Dev & Blog Page Interface */
