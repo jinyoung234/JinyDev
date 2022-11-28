@@ -13,7 +13,7 @@ export default function PostTitle({ frontMatter }: PostTitleProps) {
       <p id="category">{frontMatter.category}</p>
       <p id="title">{frontMatter.title}</p>
       <p id="createdAt">{frontMatter.createdAt.split(" ")[0]}</p>
-      <Tag post={frontMatter} />
+      <Tag tags={frontMatter.tags} />
       <img src={frontMatter.thumbnailUrl} alt="jinyoung" />
     </PostTitleWrapper>
   );

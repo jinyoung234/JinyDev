@@ -6,6 +6,7 @@ import Tag from "../../common/tag";
 
 function BlogCard({ post, slug }: BlogCardProps) {
   const { handleMovePage } = useMovePage(slug);
+  const { tags } = post;
   return (
     <BlogCardWrapper onClick={handleMovePage}>
       <BlogCardImageWrapper>
@@ -15,7 +16,7 @@ function BlogCard({ post, slug }: BlogCardProps) {
         <span>{post?.title}</span>
         <span>{post?.description}</span>
         <span>{post?.createdAt}</span>
-        <Tag post={post} />
+        <Tag tags={tags} />
       </BlogCardContentWrapper>
     </BlogCardWrapper>
   );
