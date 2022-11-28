@@ -3,7 +3,11 @@ import { Icon } from "@iconify/react";
 import Link from "next/link";
 import { FooterListWrapper, FooterContainer, FooterWritterWrapper } from "./style";
 
-export default function Footer() {
+/**
+ * - 푸터로써, `저작권 및 아이콘들로 구성`하였습니다.
+ * - 아이콘을 클릭하면 저의 `LinkedIn, Github, Instagram 주소로 이동`합니다.
+ */
+function Footer() {
   return (
     <FooterContainer>
       <FooterWritterWrapper>
@@ -23,3 +27,5 @@ export default function Footer() {
     </FooterContainer>
   );
 }
+
+export default Footer;
