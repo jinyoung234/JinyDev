@@ -34,14 +34,7 @@ export default {
   parameters: {
     componentSubtitle: "JinyDev Main Page",
   },
-  decorators: [
-    withNextRouter({
-      path: "/",
-      asPath: "/",
-      query: {},
-      push() {},
-    }),
-  ],
+  decorators: [withNextRouter],
 };
 
 export const Default = () => {
@@ -50,12 +43,4 @@ export const Default = () => {
       <MainPage />
     </Container>
   );
-};
-
-Default.parameters = {
-  nextRouter: {
-    path: "/", // defaults to `/`
-    asPath: "/", // defaults to `/`
-    query: {}, // defaults to `{}`
-  },
 };
