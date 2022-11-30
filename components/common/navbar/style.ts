@@ -6,9 +6,6 @@ export const NavContainer = styled.nav`
   padding: 1.9rem 2.4rem;
   ${displaySpaceBetween}
   align-items: center;
-  ul {
-    ${displayAlignCenter}
-  }
 `;
 
 export const NavLogoWrapper = styled.div`

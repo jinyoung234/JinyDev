@@ -1,6 +1,15 @@
 import { MDXRemoteSerializeResult } from "next-mdx-remote";
 import React from "react";
 
+export interface TitleProps {
+  /** 희망하는 직무 */
+  jobContent: string;
+  /** 강조하고 싶은 말 */
+  accentContent: string;
+  /** 이름 */
+  name: string;
+}
+
 /* Common Interface*/
 // Layout 컴포넌트 props type
 export interface LayoutProps {
@@ -23,6 +32,11 @@ export interface FrontMatterProps {
   tags: string[];
   category: string;
 }
+
+export interface TagProps {
+  /** mdxFile `meta data`(tags) */
+  tags: string[];
+}
 /* !Common Interface*/
 
 /* Dev & Blog Page Interface */
@@ -42,18 +56,23 @@ export interface PostsProps {
 
 // BlogCategory 컴포넌트 props type
 export interface BlogCategoryProps {
+  /** 카테고리 이름 */
   categoryData: string;
+  /** 게시물 총 개수 */
   count: number;
 }
 
 // CategoryTag 컴포넌트 props type
 export interface CategoryTagProps {
+  /** tag name */
   tag: string;
 }
 
 // BlogCard 컴포넌트 props type
 export interface BlogCardProps {
+  /** mdx file의 meta data */
   post: FrontMatterProps;
+  /** mdx file의 file name(.mdx 제외) */
   slug: string;
 }
 /* !Dev & Blog page Interface*/
