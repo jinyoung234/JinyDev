@@ -7,7 +7,7 @@ import { action } from "@storybook/addon-actions";
 import styled from "styled-components";
 import BlogCard from ".";
 import { LayoutWrapper } from "../../common/layout/style";
-import { BlogCardContainer, BlogContainer } from "../style";
+import { BlogCardContainer, BlogContainer } from "../../../templates/blog/style";
 import { BlogCardWrapper } from "./style";
 
 const Container = styled.div`

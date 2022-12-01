@@ -1,5 +1,5 @@
 import React from "react";
-import Blog from "../components/blog";
+import Blog from "../templates/blog";
 import Seo from "../components/common/seo";
 import { BlogProps } from "../interfaces/common";
 import getPost from "../utils/getPost";
