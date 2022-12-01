@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 /* eslint-disable no-plusplus */
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
@@ -5,8 +6,8 @@ import { useRecoilValue } from "recoil";
 import { categoryNameAtom, initializeAtom, isCategoryAtom, tagNameAtom } from "../../atoms";
 import { BLOG_CATEGORY_LIST, DEV_CATEGORY_LIST } from "../../constants";
 import { BlogProps, PostsProps } from "../../interfaces/common";
-import BlogCategory from "./blogCategory";
-import BlogCard from "./blogCard";
+import BlogCategory from "../../components/blog/blogCategory";
+import BlogCard from "../../components/blog/blogCard";
 import {
   BlogCardContainer,
   BlogCategoryContainer,
@@ -14,9 +15,24 @@ import {
   BlogContainer,
   CategoryTagContainer,
 } from "./style";
-import CategoryTag from "./categoryTag";
+import CategoryTag from "../../components/blog/categoryTag";
 
-export default function Blog({ posts }: BlogProps) {
+/**
+ * > `Blog & Dev 페이지의 템플릿` 입니다.
+ *
+ * > `mdx meta data`를 이용하여 `게시물들의 정보`들을 `Card` 형태로 화면에 나타내었습니다.
+ *
+ * > `게시물을 클릭`하면 해당 `게시물의 페이지로 이동`합니다.
+ *
+ * > `mdx file meta data` 중 `tags`를 이용하여 `게시물들의 tag들을 카테고리 형태`로 나타내었습니다.
+ *
+ * > `tag들을 클릭`하면 `tag name에 해당되는 게시물만 다시 렌더링` 하여 나타냅니다.
+ *
+ * > `화면 우측에는 블로그의 카테고리`이며, `All을 클릭` 할 경우 `전체 게시물을 렌더링` 하여 화면에 나타냅니다.
+ *
+ * > `All이 아닌 카테고리들을 클릭`하면 `meta data내 존재하는 category에 해당되는 게시물을 렌더링` 하여 화면에 나타냅니다.
+ */
+function Blog({ posts }: BlogProps) {
   const [windowSize, setWindowSize] = useState<number | null>(null);
 
   useEffect(() => {
@@ -81,20 +97,20 @@ export default function Blog({ posts }: BlogProps) {
         </BlogCategoryContainer>
       )}
       <BlogCardContainer>
-        {isInitialize
-          ? postsData.map(post => <BlogCard key={post.frontMatter.title} slug={post.slug} post={post.frontMatter} />)
-          : ""}
+        {isInitialize ? postsData.map((post, i) => <BlogCard key={i} slug={post.slug} post={post.frontMatter} />) : ""}
         {!isInitialize && isCategory
-          ? filterPostsCategoryData.map(post => (
-              <BlogCard key={post.frontMatter.title} slug={post.slug} post={post.frontMatter} />
-            ))
+          ? filterPostsCategoryData.map((post, i) => <BlogCard key={i} slug={post.slug} post={post.frontMatter} />)
           : ""}
         {!isInitialize && !isCategory
-          ? filterPostsData.map(post => (
-              <BlogCard key={post.frontMatter.title} slug={post.slug} post={post.frontMatter} />
-            ))
+          ? filterPostsData.map((post, i) => <BlogCard key={i} slug={post.slug} post={post.frontMatter} />)
           : ""}
       </BlogCardContainer>
     </BlogContainer>
   );
 }
+
+Blog.defaultProps = {
+  posts: "hi",
+};
+
+export default Blog;

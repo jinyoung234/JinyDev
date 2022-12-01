@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { CategoryTagWrapper } from "./categoryTag/style";
-import { BlogCardContentWrapper, BlogCardWrapper } from "./blogCard/style";
+import { CategoryTagWrapper } from "../../components/blog/categoryTag/style";
+import { BlogCardContentWrapper, BlogCardWrapper } from "../../components/blog/blogCard/style";
 
 export const BlogContainer = styled.div`
   padding: 2rem 20.5% 2rem 20%;
