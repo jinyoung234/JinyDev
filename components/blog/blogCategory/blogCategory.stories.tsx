@@ -2,11 +2,10 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { action } from "@storybook/addon-actions";
-import { withKnobs } from "@storybook/addon-knobs";
 import styled from "styled-components";
 import BlogCategory from ".";
 import { DEV_CATEGORY_LIST } from "../../../constants";
-import { BlogCategoryContainer, BlogCategoryListWrapper } from "../style";
+import { BlogCategoryContainer, BlogCategoryListWrapper } from "../../../templates/blog/style";
 
 const Container = styled.div`
   background-color: ${props => props.theme.bgColor};

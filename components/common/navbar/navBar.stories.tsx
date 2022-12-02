@@ -14,14 +14,7 @@ export default {
   parameters: {
     componentSubtitle: "JinyDev의 Navigation Bar",
   },
-  decorators: [
-    withNextRouter({
-      path: "/",
-      asPath: "/",
-      query: {},
-      push() {},
-    }),
-  ],
+  decorators: [withNextRouter],
 };
 
 export const Default = () => {

@@ -1,5 +1,5 @@
-import Content from "../components/main/content";
 import Seo from "../components/common/seo";
+import Content from "../templates/content";
 
 export default function MainPage() {
   return (

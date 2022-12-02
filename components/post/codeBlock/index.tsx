@@ -13,6 +13,13 @@ import {
 } from "./style";
 import { CodeBlockProps } from "../../../interfaces/common";
 
+/**
+ * > Post(slug) page 내에서 `code 관련 dom을 codeBlock 형태로 변환`하는 컴포넌트 입니다.
+ *
+ * > props로 `children과 className`을 받는데, `children은 codeBlock 내 content`이며, `className은 프로그래밍 언어(TS)`를 뜻합니다.
+ *
+ * > `사용자의 UX를 고려`하여 `디자인 및 코드 라인 애니메이션을 추가`하였습니다.
+ */
 function CodeBlock({ children, className }: CodeBlockProps) {
   const language = className ? className.replace(/language-/, "") : "";
   return (
@@ -54,5 +61,9 @@ function CodeBlock({ children, className }: CodeBlockProps) {
     </>
   );
 }
+
+CodeBlock.defaultProps = {
+  className: "TS",
+};
 
 export default CodeBlock;

@@ -4,7 +4,7 @@ import { ThemeProvider } from "styled-components";
 import { lightTheme, colorTheme } from "../styles/theme";
 import { GlobalStyle } from "../styles/globalStyle";
 import { RecoilRoot } from "recoil";
-import { RouterContext } from "next/dist/shared/lib/router-context";
+import { withNextRouter } from "@gogaille/storybook-addon-next-router";
 
 const themes = [lightTheme, colorTheme];
 addDecorator(withThemesProvider(themes), ThemeProvider);
@@ -18,6 +18,12 @@ export const decorators = [
       </ThemeProvider>
     </RecoilRoot>
   ),
+  withNextRouter({
+    path: "/",
+    asPath: "/",
+    query: {},
+    push() {},
+  }),
 ];
 
 export const parameters = {
@@ -27,11 +33,5 @@ export const parameters = {
       color: /(background|color)$/i,
       date: /Date$/,
     },
-  },
-  nextRouter: {
-    Provider: RouterContext.Provider,
-    path: "/", // defaults to `/`
-    asPath: "/", // defaults to `/`
-    query: {}, // defaults to `{}`
   },
 };
