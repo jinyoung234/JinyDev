@@ -100,6 +100,12 @@ export interface CodeBlockProps {
   className: string;
 }
 
+// PostTitle Component props type
+export interface PostTitleProps {
+  /** mdx file meta data */
+  frontMatter: FrontMatterProps;
+}
+
 // Toc Component type
 export interface TocProps {
   content: string;
