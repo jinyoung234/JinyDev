@@ -94,7 +94,9 @@ export interface GetStaticPathProps {
 
 // CodeBlock Component props type
 export interface CodeBlockProps {
+  /** codeblock 내 content */
   children: string;
+  /** content의 langauge */
   className: string;
 }
 
