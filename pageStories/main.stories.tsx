@@ -2,7 +2,7 @@
 /* eslint-disable no-sparse-arrays */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from "react";
-import MainPage from "./main/MainPage";
+import MainStory from "./main";
 import { withNextRouter } from "@gogaille/storybook-addon-next-router";
 import styled from "styled-components";
 
@@ -30,7 +30,7 @@ const Container = styled.div`
 
 export default {
   title: "Pages/Main Page",
-  component: MainPage,
+  component: MainStory,
   parameters: {
     componentSubtitle: "JinyDev Main Page",
   },
@@ -40,7 +40,7 @@ export default {
 export const Default = () => {
   return (
     <Container>
-      <MainPage />
+      <MainStory />
     </Container>
   );
 };

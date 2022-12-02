@@ -9,10 +9,12 @@ import Content from "../../templates/content";
  * - Nav Bar에 있는 `아이콘` 클릭을 통해 `lightMode, ColorMode를 확인`하실 수 있습니다.
  * - (Canvas에서 확인해주세요..!)
  */
-export default function MainPage() {
+function MainStory() {
   return (
     <Layout>
       <Content />
     </Layout>
   );
 }
+
+export default MainStory;
