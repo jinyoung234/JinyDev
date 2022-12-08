@@ -62,8 +62,4 @@ function CodeBlock({ children, className }: CodeBlockProps) {
   );
 }
 
-CodeBlock.defaultProps = {
-  className: "TS",
-};
-
 export default CodeBlock;
