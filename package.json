@@ -9,7 +9,8 @@
     "prepare": "husky install",
     "storybook": "start-storybook -p 6006 -s ./public",
     "build-storybook": "build-storybook -s ./public",
-    "prebuild": "node ./utils/sitemapGenerator.mjs"
+    "prebuild": "node ./utils/sitemapGenerator.mjs",
+    "chromatic": "npx chromatic --project-token=863352f956dc"
   },
   "dependencies": {
     "@iconify/react": "^4.0.0",
@@ -72,5 +73,7 @@
   },
   "lint-staged": {
     "*.{js,ts,tsx}": "next lint --fix"
-  }
+  },
+  "readme": "ERROR: No README data found!",
+  "_id": "jiny-dev@1.0.0"
 }
