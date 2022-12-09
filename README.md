@@ -48,6 +48,7 @@
   <img src="https://img.shields.io/badge/AWS S3-569A31?logo=Amazon S3"/>
   <img src="https://img.shields.io/badge/AWS CloudFront-232F3E?logo=aws cloudfront"/>
   <img src="https://img.shields.io/badge/Github Actions-2088FF?logo=github actions"/>
+  <img src="https://img.shields.io/badge/Chromatic-FF6550"/>
   <br/>
 </div>
 
@@ -137,7 +138,7 @@
 
 ## 🆂 StoryBook
 
-> [Storybook](https://63897667321e32d242df7989-cbwxmrltrb.chromatic.com)
+> [Storybook](https://www.chromatic.com/builds?appId=63897667321e32d242df7989)
 
 - `독립적 UI 컴포넌트 개발` 및 `컴포넌트 문서화`를 통해 `CDD`(Component Driven Development)를 실천하였고, 이를 위해 `StoryBook을 사용`하였습니다.
 
