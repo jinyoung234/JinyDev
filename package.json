@@ -8,8 +8,9 @@
     "lint": "next lint --fix",
     "prepare": "husky install",
     "storybook": "start-storybook -p 6006 -s ./public",
-    "build-storybook": "build-storybook s public",
-    "prebuild": "node ./utils/sitemapGenerator.mjs"
+    "build-storybook": "build-storybook -s ./public",
+    "prebuild": "node ./utils/sitemapGenerator.mjs",
+    "chromatic": "npx chromatic --project-token=863352f956dc"
   },
   "dependencies": {
     "@iconify/react": "^4.0.0",
@@ -50,6 +51,7 @@
     "@typescript-eslint/parser": "^5.42.0",
     "babel-loader": "^8.3.0",
     "babel-plugin-styled-components": "^2.0.7",
+    "chromatic": "^6.11.4",
     "eslint": "^8.26.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-typescript": "^17.0.0",
@@ -71,5 +73,7 @@
   },
   "lint-staged": {
     "*.{js,ts,tsx}": "next lint --fix"
-  }
+  },
+  "readme": "ERROR: No README data found!",
+  "_id": "jiny-dev@1.0.0"
 }
