@@ -9,8 +9,9 @@
 
 <h2 align="center">
 
-<img src="https://user-images.githubusercontent.com/87177577/205266304-77919ae6-a19d-406b-be4d-4178e2723fde.png" width="200"/>
+<img width="597" alt="image" src="https://user-images.githubusercontent.com/87177577/235955340-f9b7619e-d515-47c3-a72a-4f2691a0df14.png">
 
+<h2 align="center">
     개발과 관련된 자료를 모아두는 나만의 Blog
 
 </h2>
