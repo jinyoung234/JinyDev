@@ -25,6 +25,7 @@ export interface SeoProps {
 
 // Tag, PostTitle 컴포넌트 props type(mdx 파일에 있는 metadata type)
 export interface FrontMatterProps {
+  frontMatter: FrontMatterProps;
   title: string;
   createdAt: string;
   description: string;
