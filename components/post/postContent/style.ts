@@ -103,4 +103,7 @@ export const PostContentWrapper = styled.div`
   img {
     margin: 3rem 0;
   }
+  a {
+    color: #a5292a;
+  }
 `;
