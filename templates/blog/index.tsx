@@ -43,7 +43,11 @@ function Blog({ posts }: BlogProps) {
     };
   }, [setWindowSize]);
 
-  const postsData = Array.from(Object.values(posts)) as unknown as PostsProps[];
+  const postsData = Array.from(Object.values(posts)).sort(
+    (a, b) =>
+      new Date((b as unknown as PostsProps).frontMatter.createdAt).getTime() -
+      new Date((a as unknown as PostsProps).frontMatter.createdAt).getTime(),
+  ) as unknown as PostsProps[];
   const tagList = Array.from(new Set(postsData.map(post => post.frontMatter.tags).flat()));
 
   const isInitialize = useRecoilValue(initializeAtom);
@@ -53,8 +57,8 @@ function Blog({ posts }: BlogProps) {
 
   const filterPostsData = postsData.filter(post => {
     let filterTag = "";
-    for (let i = 0; i < post.frontMatter.tags.length; i++)
-      if (tagName.includes(post.frontMatter.tags[i])) filterTag = post.frontMatter.tags[i];
+    for (let i = 0; i < post?.frontMatter?.tags?.length; i++)
+      if (tagName.includes(post?.frontMatter?.tags[i])) filterTag = post?.frontMatter?.tags[i];
     return filterTag;
   });
   const filterPostsCategoryData = postsData.filter(post => post.frontMatter.category === categoryName);
@@ -66,15 +70,27 @@ function Blog({ posts }: BlogProps) {
 
   useEffect(() => {
     postsData.forEach(data => {
-      DEV_CATEGORY_LIST.forEach((category, i) => {
-        if (data.frontMatter.category === DEV_CATEGORY_LIST[i]) {
-          setCategoryCount(prev => {
-            const copy = [...prev];
-            copy[i]++;
-            return copy;
-          });
-        }
-      });
+      if (isRoute === "dev") {
+        DEV_CATEGORY_LIST.forEach((category, i) => {
+          if (data.frontMatter.category === DEV_CATEGORY_LIST[i]) {
+            setCategoryCount(prev => {
+              const copy = [...prev];
+              copy[i]++;
+              return copy;
+            });
+          }
+        });
+      } else {
+        BLOG_CATEGORY_LIST.forEach((category, i) => {
+          if (data.frontMatter.category === BLOG_CATEGORY_LIST[i]) {
+            setCategoryCount(prev => {
+              const copy = [...prev];
+              copy[i]++;
+              return copy;
+            });
+          }
+        });
+      }
     });
   }, []);
   return (
@@ -92,17 +108,19 @@ function Blog({ posts }: BlogProps) {
               ? DEV_CATEGORY_LIST.map((category, i) => (
                   <BlogCategory key={category} categoryData={category} count={categoryCount[i]} />
                 ))
-              : BLOG_CATEGORY_LIST.map(category => <BlogCategory count={1} key={category} categoryData={category} />)}
+              : BLOG_CATEGORY_LIST.map((category, i) => (
+                  <BlogCategory count={categoryCount[i]} key={category} categoryData={category} />
+                ))}
           </BlogCategoryListWrapper>
         </BlogCategoryContainer>
       )}
       <BlogCardContainer>
-        {isInitialize ? postsData.map((post, i) => <BlogCard key={i} slug={post.slug} post={post.frontMatter} />) : ""}
+        {isInitialize ? postsData.map((post, i) => <BlogCard key={i} slug={post.slug} post={post?.frontMatter} />) : ""}
         {!isInitialize && isCategory
-          ? filterPostsCategoryData.map((post, i) => <BlogCard key={i} slug={post.slug} post={post.frontMatter} />)
+          ? filterPostsCategoryData.map((post, i) => <BlogCard key={i} slug={post.slug} post={post?.frontMatter} />)
           : ""}
         {!isInitialize && !isCategory
-          ? filterPostsData.map((post, i) => <BlogCard key={i} slug={post.slug} post={post.frontMatter} />)
+          ? filterPostsData.map((post, i) => <BlogCard key={i} slug={post.slug} post={post?.frontMatter} />)
           : ""}
       </BlogCardContainer>
     </BlogContainer>
