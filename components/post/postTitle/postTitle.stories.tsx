@@ -1,6 +1,7 @@
 /* eslint-disable react/no-children-prop */
 
 import PostTitle from ".";
+import { FrontMatterProps } from "../../../interfaces/common";
 import { LayoutWrapper } from "../../common/layout/style";
 import { PostContentContainer } from "../style";
 
@@ -24,7 +25,7 @@ export const Default = () => {
   return (
     <LayoutWrapper isChangeMode={false}>
       <PostContentContainer>
-        <PostTitle frontMatter={DATA} />
+        <PostTitle frontMatter={DATA as unknown as FrontMatterProps} />
       </PostContentContainer>
     </LayoutWrapper>
   );

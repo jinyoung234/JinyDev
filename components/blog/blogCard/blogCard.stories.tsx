@@ -9,6 +9,7 @@ import BlogCard from ".";
 import { LayoutWrapper } from "../../common/layout/style";
 import { BlogCardContainer, BlogContainer } from "../../../templates/blog/style";
 import { BlogCardWrapper } from "./style";
+import { FrontMatterProps, PostProps } from "../../../interfaces/common";
 
 const Container = styled.div`
   width: 1500px;
@@ -70,7 +71,7 @@ export const Default = () => {
         <BlogContainer>
           <BlogCardContainer onClick={action("handleMovePage")}>
             {CARD_DATA.map((data, i) => (
-              <BlogCard post={data} slug={SLUG_DATA[i]} />
+              <BlogCard post={data as unknown as FrontMatterProps} slug={SLUG_DATA[i]} />
             ))}
           </BlogCardContainer>
         </BlogContainer>
